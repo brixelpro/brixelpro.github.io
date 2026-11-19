@@ -48,13 +48,15 @@ addEventListener('DOMContentLoaded',()=>{
   const ease=k=>1-Math.pow(1-Math.min(1,Math.max(0,k)),3);
   let vis=true;document.addEventListener('visibilitychange',()=>{vis=!document.hidden;if(vis)requestAnimationFrame(loop)});
   // sur cellulaire : on arrête la 3D quand une section opaque couvre l'écran (plus fluide)
-  let hidden3d=false;
+  let hidden3d=false,scrolling=false,st=0;
+  if(mobile){const on=()=>{scrolling=true;clearTimeout(st);st=setTimeout(()=>{scrolling=false},180)};
+    addEventListener('scroll',on,{passive:true});addEventListener('touchmove',on,{passive:true})}
   if(mobile&&'IntersectionObserver' in window){const cover=new Set();
     const io=new IntersectionObserver(es=>{es.forEach(e=>{e.isIntersecting&&e.intersectionRect.height>innerHeight*.9?cover.add(e.target):cover.delete(e.target)});
       const h=cover.size>0;if(h!==hidden3d){hidden3d=h;c.style.visibility=h?'hidden':'visible'}},{threshold:Array.from({length:21},(_,i)=>i/20)});
     document.querySelectorAll('.change,.how,.contact').forEach(el=>io.observe(el))}
   function loop(now){
-    if(!vis)return;if(hidden3d){if(!RM)requestAnimationFrame(loop);return}now/=1000;t0??=now;const t=now-t0;
+    if(!vis)return;if(hidden3d||scrolling){if(!RM)requestAnimationFrame(loop);return}now/=1000;t0??=now;const t=now-t0;
     px+=(tx-px)*.05;py+=(ty-py)*.05;
     const pr=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight),cy=6-pr*30;
     cam.position.x=px*2.2;cam.position.y=cy-py*1.6;cam.lookAt(px*.6,cy,0);
