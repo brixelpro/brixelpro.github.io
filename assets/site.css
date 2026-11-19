@@ -254,12 +254,12 @@ h1,h2,h3{overflow-wrap:break-word;max-width:100%;font-family:"Archivo",sans-seri
   .new .scroll{will-change:transform}
 }
 
-/* CELLULAIRE : défilement 100 % libre — pas de section collante */
+}
+
+/* CELLULAIRE : section collante gardée, mais allégée */
 @media(max-width:899px){
-  .ch-phone{display:none!important}
-  .steps{margin-top:0!important;padding-bottom:0!important}
-  .step{visibility:visible!important;min-height:0!important;opacity:1!important;background:none!important;margin:0!important;padding:26px 0!important;border-top:1px solid rgba(243,245,255,.12);justify-content:flex-start!important}
-  .step:first-child{border-top:0}
-  .change{background:transparent!important}
+  .change{background:#070d27!important}
+  .ch-phone{will-change:transform;contain:layout paint}
+  .ch-phone .screen{contain:strict}
   html{scroll-behavior:auto}
 }
