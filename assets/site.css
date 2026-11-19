@@ -260,3 +260,12 @@ h1,h2,h3{overflow-wrap:break-word;max-width:100%;font-family:"Archivo",sans-seri
   .change{background:#070d27!important}
   html{scroll-behavior:auto}
 }
+
+/* boîte collée de taille FIXE : plus jamais de saut */
+html,body{overflow-anchor:none}
+@media(max-width:899px){
+  .cap{height:150px;min-height:0;overflow:hidden}
+  .cap h3{font-size:26px;line-height:1.05}
+  .cap p{font-size:14.5px;line-height:1.45}
+  .ch-phone .phone{width:min(170px,44vw)}
+}
