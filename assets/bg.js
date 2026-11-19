@@ -54,7 +54,7 @@ addEventListener('DOMContentLoaded',()=>{
   if(mobile&&'IntersectionObserver' in window){const cover=new Set();
     const io=new IntersectionObserver(es=>{es.forEach(e=>{e.isIntersecting&&e.intersectionRect.height>innerHeight*.9?cover.add(e.target):cover.delete(e.target)});
       const h=cover.size>0;if(h!==hidden3d){hidden3d=h;c.style.visibility=h?'hidden':'visible'}},{threshold:Array.from({length:21},(_,i)=>i/20)});
-    document.querySelectorAll('.change,.how,.contact').forEach(el=>io.observe(el))}
+    document.querySelectorAll('.how,.contact').forEach(el=>io.observe(el))}
   function loop(now){
     if(!vis)return;if(hidden3d||scrolling){if(!RM)requestAnimationFrame(loop);return}now/=1000;t0??=now;const t=now-t0;
     px+=(tx-px)*.05;py+=(ty-py)*.05;
