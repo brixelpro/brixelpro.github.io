@@ -9,9 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Brixel Pro","email":"alexis@brixelpro.com","address":{"@type":"PostalAddress","streetAddress":"13540, rue Paul-Émile-Borduas","addressLocality":"Mirabel","addressRegion":"QC","postalCode":"J7N 3J7","addressCountry":"CA"},"priceRange":"499,99 $","areaServed":"Québec"}</script>
-<link rel="stylesheet" href="assets/site.css?v=7">
+<link rel="stylesheet" href="assets/site.css?v=8">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-<script src="assets/bg.js?v=7" defer></script>
+<script src="assets/bg.js?v=8" defer></script>
 </head>
 <body>
 <canvas id="bg" aria-hidden="true"></canvas>
@@ -204,9 +204,11 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
   const set=p=>{pos=Math.max(0,Math.min(1,p));old.style.clipPath=`inset(0 ${100-pos*100}% 0 0)`;handle.style.left=(pos*100)+'%'};
   const fromEvt=e=>{const r=scr.getBoundingClientRect();return (e.clientX-r.left)/r.width};
   let drag=false;
-  scr.addEventListener('pointerdown',e=>{if(!demo.classList.contains('ready'))return;drag=true;scr.setPointerCapture(e.pointerId);set(fromEvt(e));hint.style.opacity=0});
-  scr.addEventListener('pointermove',e=>{if(drag)set(fromEvt(e))});
-  scr.addEventListener('pointerup',()=>drag=false);scr.addEventListener('pointercancel',()=>drag=false);
+  // seule la poignée jaune se glisse : ailleurs sur le téléphone, le doigt fait défiler la page
+  const hb=handle.querySelector('button');
+  hb.addEventListener('pointerdown',e=>{if(!demo.classList.contains('ready'))return;drag=true;hb.setPointerCapture(e.pointerId);hint.style.opacity=0;e.preventDefault()});
+  hb.addEventListener('pointermove',e=>{if(drag)set(fromEvt(e))});
+  hb.addEventListener('pointerup',()=>drag=false);hb.addEventListener('pointercancel',()=>drag=false);
   handle.querySelector('button').addEventListener('keydown',e=>{if(e.key==='ArrowRight')set(pos+.1);if(e.key==='ArrowLeft')set(pos-.1)});
 
   // briques
@@ -214,10 +216,10 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
   for(let r=0;r<R;r++)for(let c=0;c<C;c++){const b=document.createElement('i');b.style.setProperty('--d',((R-1-r)*55+Math.random()*90)+'ms');bricks.appendChild(b)}
   function build(){
     demo.classList.remove('ready','building');set(1);hint.style.opacity=1;hint.textContent='Voici le site d’aujourd’hui…';
-    if(RM){set(0);demo.classList.add('ready');hint.textContent='Glissez la barre jaune pour comparer.';return}
+    if(RM){set(0);demo.classList.add('ready');hint.textContent='Glissez le bouton jaune pour comparer.';return}
     setTimeout(()=>{hint.textContent='On le rebâtit…';void demo.offsetWidth;demo.classList.add('building')},1400);
     setTimeout(()=>{set(0)},1400+1050);
-    setTimeout(()=>{demo.classList.remove('building');set(.12);demo.classList.add('ready');hint.textContent='Glissez la barre jaune pour comparer.';
+    setTimeout(()=>{demo.classList.remove('building');set(.12);demo.classList.add('ready');hint.textContent='Glissez le bouton jaune pour comparer.';
       // petit aller-retour pour montrer que ça se glisse
       let t0=null;const go=t=>{t0??=t;const k=(t-t0)/1400;if(k>1){set(.06);return}set(.12+Math.sin(k*Math.PI)*.38);requestAnimationFrame(go)};requestAnimationFrame(go);
     },1400+1250+900);
@@ -251,8 +253,13 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
     err.textContent='';});
   // scroll : le téléphone suit les étapes
   const sc2=document.getElementById('sc2'),call2=document.getElementById('call2'),steps=[...document.querySelectorAll('.step')];
+  const chg=document.querySelector('.change'),scrWin=sc2.parentNode;let tk=false;
+  const sync=()=>{tk=false;const r=chg.getBoundingClientRect(),span=Math.max(1,r.height-innerHeight*.6);
+    const p=Math.min(1,Math.max(0,(-r.top+innerHeight*.2)/span)),max=Math.max(0,sc2.scrollHeight-scrWin.clientHeight+70);
+    sc2.style.transform=`translate3d(0,${-p*max}px,0)`};
+  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(sync)}},{passive:true});addEventListener('resize',sync);sync();
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;steps.forEach(s=>s.classList.toggle('on',s===e.target));
-    const k=+e.target.dataset.y,secs=sc2.querySelectorAll('section');sc2.style.transform=`translateY(${k?-(secs[k-1].offsetTop-8):0}px)`;const cap=document.getElementById('cap');if(cap&&cap.dataset.k!==e.target.dataset.y+(e.target.dataset.call||'')){cap.dataset.k=e.target.dataset.y+(e.target.dataset.call||'');cap.innerHTML='<div>'+e.target.innerHTML+'</div>'}call2.classList.toggle('pulse',!!e.target.dataset.call)})},{rootMargin:'-45% 0px -45% 0px'});
+    const cap=document.getElementById('cap');if(cap&&cap.dataset.k!==e.target.dataset.y+(e.target.dataset.call||'')){cap.dataset.k=e.target.dataset.y+(e.target.dataset.call||'');cap.innerHTML='<div>'+e.target.innerHTML+'</div>'}call2.classList.toggle('pulse',!!e.target.dataset.call)})},{rootMargin:'-45% 0px -45% 0px'});
   steps.forEach(s=>io.observe(s));
 })();
 </script>
