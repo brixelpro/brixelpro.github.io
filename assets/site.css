@@ -241,3 +241,15 @@ h1,h2,h3{overflow-wrap:break-word;max-width:100%;font-family:"Archivo",sans-seri
   .steps{padding-bottom:20vh}
   .cap>div{animation:none}
 }
+
+@media(max-width:899px){
+  .how{background:#f3f5ff!important}
+  .ch-phone .new{zoom:1}
+  .ch-phone .new .scroll{font-size:12px}
+  .ch-phone .new header h4{font-size:22px}
+  .ch-phone .new .item{font-size:11px;padding:5px 0}
+  .ch-phone .new h5{font-size:15px}
+  .ch-phone .new .rev{font-size:11px;padding:9px}
+  .ch-phone .new .call{font-size:11.5px;padding:10px}
+  .new .scroll{will-change:transform}
+}
