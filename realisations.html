@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Réalisations — Brixel Pro</title>
+<meta name="description" content="Des exemples de vieux sites de commerces refaits par Brixel Pro : avant et après.">
+<meta name="theme-color" content="#0d1e52">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="assets/bg.js" defer></script>
+<style>
+.cases{display:grid;gap:28px}
+.case{display:grid;grid-template-columns:1fr;gap:26px;padding:26px;align-items:center}
+@media(min-width:900px){.case{grid-template-columns:320px 1fr;padding:36px;gap:50px}.case:nth-child(even){grid-template-columns:1fr 320px}.case:nth-child(even) .mock{order:2}}
+.mock{display:flex;justify-content:center}
+.scr{position:relative;width:min(260px,70vw);aspect-ratio:9/18;border-radius:32px;background:#05091c;padding:9px;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.scr>div{position:absolute;inset:9px;border-radius:24px;overflow:hidden;transition:opacity .45s,transform .45s}
+.o{background:#efe4c8;font-family:"Times New Roman",serif;color:#222;font-size:9px;padding:0}
+.o .ob{background:#7a1f12;color:#ff0;font:bold 12px "Comic Sans MS",cursive;padding:10px 6px;text-align:center}
+.o .om{background:#d9c79a;padding:4px;color:#00e;text-decoration:underline}
+.o p{padding:6px;font-size:7px}.o small{display:block;padding:6px;color:#777;font-size:6px}
+.n{background:var(--c2);color:var(--ink);font-family:"Instrument Sans",system-ui,sans-serif}
+.nh{background:var(--c1);color:var(--c2);padding:42px 16px 18px}
+.nh h3{font-size:24px;line-height:1;font-weight:800}
+.nh p{font-size:12px;opacity:.85;margin:4px 0 12px}
+.nh span{display:inline-block;background:var(--acc);color:#fff;font-weight:700;font-size:12px;padding:8px 14px;border-radius:99px}
+.case:not([data-acc]) .nh span{background:var(--c2);color:var(--c1)}
+.nb{padding:14px 16px}
+.nb .r{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;padding:8px 0;border-bottom:1px dashed rgba(0,0,0,.18)}
+.nc{position:absolute;left:12px;right:12px;bottom:12px;background:var(--ink);color:var(--c2);text-align:center;font-weight:700;font-size:12.5px;padding:12px;border-radius:99px}
+.case[data-state="new"] .o{opacity:0;transform:scale(.96)}
+.case[data-state="old"] .n{opacity:0;transform:scale(1.04)}
+.txt .tag{display:inline-block;font-size:13px;font-weight:600;background:rgba(255,199,44,.15);color:var(--chantier);padding:4px 10px;border-radius:99px;margin-bottom:12px}
+.txt h2{font-size:clamp(30px,4vw,48px);font-weight:900}
+.txt .meta{color:#aab6e6;margin:6px 0 16px}
+.txt ul{list-style:none;display:grid;gap:8px;margin-bottom:22px}
+.txt li{padding-left:28px;position:relative}
+.txt li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:8px;border-left:3px solid var(--chantier);border-bottom:3px solid var(--chantier);transform:rotate(-45deg)}
+.tg{display:inline-flex;background:rgba(243,245,255,.08);border-radius:99px;padding:4px}
+.tg button{border:0;background:none;color:var(--craie);font:700 15px "Instrument Sans",system-ui,sans-serif;padding:10px 20px;border-radius:99px;cursor:pointer}
+.tg button[aria-pressed="true"]{background:var(--chantier);color:var(--nuit)}
+.note{margin-top:40px;padding:26px;color:#d7defa}
+</style>
+</head>
+<body class="loaded introdone">
+<canvas id="bg" aria-hidden="true"></canvas>
+<header class="top">
+  <a class="logo" href="index.html" aria-label="Brixel Pro, accueil"><i aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></i>Brixel Pro</a>
+  <nav aria-label="Navigation principale"><a class="l" href="realisations.html" aria-current="page">Réalisations</a><a class="l" href="inclus.html">Ce qui est inclus</a><a class="l" href="faq.html">Questions</a><a class="l" href="a-propos.html">À propos</a><a class="btn" href="index.html#contact">Réserver un appel</a><button class="menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="sheet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></nav>
+</header>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu"><button class="menu-btn x" type="button" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><a href="index.html">Accueil</a><a href="realisations.html" aria-current="page">Réalisations</a><a href="inclus.html">Ce qui est inclus</a><a href="faq.html">Questions</a><a href="a-propos.html">À propos</a><a class="btn" href="index.html#contact">Réserver un appel gratuit</a></div>
+<main>
+<section class="page-hero"><h1>Des sites qu'on a envie d'ouvrir.</h1><p>Voici le genre de transformation qu'on fait pour les commerces d'ici. Appuyez sur « Avant » et « Après » pour comparer.</p></section>
+<section class="wrap"><div class="cases"><article class="case glass" data-state="new">
+  <div class="mock"><div class="scr">
+    <div class="o"><div class="ob">Bienvenue Chez Ginette!!!</div><div class="om">Menu (PDF) &nbsp;|&nbsp; Nous joindre &nbsp;|&nbsp; Livre d'or</div><p>Bienvenue sur notre site. Pour voir nos produits, téléchargez le fichier. Merci de votre visite et à bientôt.</p><small>© 2012 — Meilleur affichage en 800x600</small></div>
+    <div class="n" style="--c1:#c8102e;--c2:#fff8ef;--ink:#2a1608;--acc:#c8102e"><div class="nh"><h3 style="font-family:"Fraunces",Georgia,serif">Chez Ginette</h3><p>Casse-croûte · Mirabel</p><span>Appeler</span></div><div class="nb"><div class="r"><span>Poutine régulière</span><b>9,50 $</b></div><div class="r"><span>Hot-dog steamé</span><b>3,25 $</b></div><div class="r"><span>Club sandwich</span><b>14,95 $</b></div></div><div class="nc">Appeler Chez Ginette</div></div>
+  </div></div>
+  <div class="txt">
+    <p class="tag">Exemple fictif</p>
+    <h2>Chez Ginette</h2>
+    <p class="meta">Casse-croûte, Mirabel</p>
+    <ul><li>Lisible sur cellulaire</li><li>Menu complet en ligne au lieu d’un PDF</li><li>Bouton pour appeler toujours visible</li></ul>
+    <div class="tg" role="group" aria-label="Comparer"><button type="button" data-v="old">Avant</button><button type="button" data-v="new" aria-pressed="true">Après</button></div>
+  </div>
+</article><article class="case glass" data-state="new">
+  <div class="mock"><div class="scr">
+    <div class="o"><div class="ob">PIZZA NONNA ROSA - Commandez au téléphone</div><div class="om">Menu (PDF) &nbsp;|&nbsp; Nous joindre &nbsp;|&nbsp; Livre d'or</div><p>Bienvenue sur notre site. Pour voir nos produits, téléchargez le fichier. Merci de votre visite et à bientôt.</p><small>© 2012 — Meilleur affichage en 800x600</small></div>
+    <div class="n" style="--c1:#1f6b3a;--c2:#fbf3e4;--ink:#3a1a0c;--acc:#1f6b3a"><div class="nh"><h3 style="font-family:"Fraunces",Georgia,serif">Pizzeria Nonna Rosa</h3><p>Pizzeria · Saint-Jérôme</p><span>Appeler</span></div><div class="nb"><div class="r"><span>Margherita 12 po</span><b>17,95 $</b></div><div class="r"><span>Toute garnie 12 po</span><b>21,50 $</b></div><div class="r"><span>Calzone</span><b>16,25 $</b></div></div><div class="nc">Appeler Pizzeria Nonna Rosa</div></div>
+  </div></div>
+  <div class="txt">
+    <p class="tag">Exemple fictif</p>
+    <h2>Pizzeria Nonna Rosa</h2>
+    <p class="meta">Pizzeria, Saint-Jérôme</p>
+    <ul><li>Menu par format et par prix, clair</li><li>Heures et livraison en haut de page</li><li>Avis Google mis en vedette</li></ul>
+    <div class="tg" role="group" aria-label="Comparer"><button type="button" data-v="old">Avant</button><button type="button" data-v="new" aria-pressed="true">Après</button></div>
+  </div>
+</article><article class="case glass" data-state="new" data-acc>
+  <div class="mock"><div class="scr">
+    <div class="o"><div class="ob">Garage Lapointe Inc. - Mécanique générale</div><div class="om">Menu (PDF) &nbsp;|&nbsp; Nous joindre &nbsp;|&nbsp; Livre d'or</div><p>Bienvenue sur notre site. Pour voir nos produits, téléchargez le fichier. Merci de votre visite et à bientôt.</p><small>© 2012 — Meilleur affichage en 800x600</small></div>
+    <div class="n" style="--c1:#111418;--c2:#f4f4f1;--ink:#111418;--acc:#ff6a13"><div class="nh"><h3 style="font-family:"Archivo",sans-serif">Garage Lapointe</h3><p>Garage · Blainville</p><span>Appeler</span></div><div class="nb"><div class="r"><span>Changement d’huile</span><b>sur rendez-vous</b></div><div class="r"><span>Pneus et alignement</span><b>sur rendez-vous</b></div><div class="r"><span>Freins</span><b>sur rendez-vous</b></div></div><div class="nc">Appeler Garage Lapointe</div></div>
+  </div></div>
+  <div class="txt">
+    <p class="tag">Exemple fictif</p>
+    <h2>Garage Lapointe</h2>
+    <p class="meta">Garage, Blainville</p>
+    <ul><li>Services expliqués simplement</li><li>Bouton pour appeler et demander un rendez-vous</li><li>Carte et heures en un coup d’œil</li></ul>
+    <div class="tg" role="group" aria-label="Comparer"><button type="button" data-v="old">Avant</button><button type="button" data-v="new" aria-pressed="true">Après</button></div>
+  </div>
+</article></div>
+<div class="note glass"><b style="color:var(--craie)">Ces trois commerces sont fictifs.</b> Ils montrent notre façon de travailler. Les sites de nos vrais clients s'ajouteront ici, avec leur permission. Le meilleur exemple reste le vôtre : réservez un appel et on vous montre votre propre site refait.<br><br><a class="btn" href="index.html#contact">Réserver mon appel gratuit</a></div></section>
+<script>document.querySelectorAll('.case').forEach(c=>c.querySelectorAll('.tg button').forEach(b=>b.onclick=()=>{c.dataset.state=b.dataset.v;c.querySelectorAll('.tg button').forEach(x=>x.setAttribute('aria-pressed',x===b))}))</script>
+</main>
+<footer class="foot">
+  <div><b>Brixel Pro</b>Sites web pour commerces d'ici. On refait le site de votre commerce, avec votre vrai contenu, pour 499,99 $, tout inclus.</div>
+  <div><b>Pages</b><a href="index.html">Accueil</a><a href="realisations.html">Réalisations</a><a href="inclus.html">Ce qui est inclus</a><a href="faq.html">Questions</a><a href="a-propos.html">À propos</a></div>
+  <div><b>Nous joindre</b><a href="mailto:alexis@brixelpro.com">alexis@brixelpro.com</a>13540, rue Paul-Émile-Borduas<br>Mirabel (Québec) J7N 3J7<a href="index.html#contact" style="color:var(--chantier);margin-top:8px">Réserver un appel gratuit</a></div>
+</footer>
+<script>
+(function(){const s=document.getElementById('sheet'),o=document.querySelector('.top .menu-btn'),x=s.querySelector('.x');
+const set=v=>{s.classList.toggle('open',v);o.setAttribute('aria-expanded',v);document.body.style.overflow=v?'hidden':'';if(v)x.focus()};
+o.onclick=()=>set(true);x.onclick=()=>set(false);s.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
+</script>
+</body>
+</html>

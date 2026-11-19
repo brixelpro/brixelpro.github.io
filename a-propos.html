@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>À propos — Brixel Pro</title>
+<meta name="description" content="Brixel Pro, agence de Mirabel qui refait les sites web des commerces du Québec.">
+<meta name="theme-color" content="#0d1e52">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="assets/bg.js" defer></script>
+<style>
+.ab{display:grid;gap:40px}
+@media(min-width:900px){.ab{grid-template-columns:1.1fr .9fr;align-items:start}}
+.ab p{font-size:19px;color:#d7defa;margin-bottom:18px;max-width:34em}
+.brick{padding:30px}
+.brick .bx{display:grid;grid-template-columns:repeat(3,48px);gap:8px;margin-bottom:22px}
+.brick .bx b{height:48px;border-radius:8px;background:var(--chantier)}
+.brick .bx b:nth-child(2),.brick .bx b:nth-child(4),.brick .bx b:nth-child(9){background:var(--craie)}
+.brick h3{font-size:26px;font-weight:800;margin-bottom:8px}
+.eg{display:grid;gap:14px;margin-top:60px}
+@media(min-width:800px){.eg{grid-template-columns:1fr 1fr}}
+.e{padding:24px}.e h3{font-size:22px;font-weight:800;margin-bottom:6px}.e p{color:#c9d2f3}
+</style>
+</head>
+<body class="loaded introdone">
+<canvas id="bg" aria-hidden="true"></canvas>
+<header class="top">
+  <a class="logo" href="index.html" aria-label="Brixel Pro, accueil"><i aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></i>Brixel Pro</a>
+  <nav aria-label="Navigation principale"><a class="l" href="realisations.html">Réalisations</a><a class="l" href="inclus.html">Ce qui est inclus</a><a class="l" href="faq.html">Questions</a><a class="l" href="a-propos.html" aria-current="page">À propos</a><a class="btn" href="index.html#contact">Réserver un appel</a><button class="menu-btn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="sheet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></nav>
+</header>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Menu"><button class="menu-btn x" type="button" aria-label="Fermer le menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button><a href="index.html">Accueil</a><a href="realisations.html">Réalisations</a><a href="inclus.html">Ce qui est inclus</a><a href="faq.html">Questions</a><a href="a-propos.html" aria-current="page">À propos</a><a class="btn" href="index.html#contact">Réserver un appel gratuit</a></div>
+<main>
+<section class="page-hero"><h1>Des sites bâtis brique par brique.</h1><p>Brixel Pro, c'est une petite agence de Mirabel qui donne une deuxième vie aux sites des commerces d'ici.</p></section>
+<section class="wrap"><div class="ab"><div>
+<p>Je m'appelle Alexis Champagne. J'ai remarqué que plein de bons restos, cafés et garages du Québec avaient un site qui ne leur rendait pas justice : impossible à lire sur un cellulaire, un menu en PDF, pas touché depuis des années.</p>
+<p>Alors j'ai décidé de faire les choses à l'envers : au lieu de vendre une promesse, on refait votre site d'abord, avec votre vrai contenu, et on vous le montre. Il vous plaît? On le met en ligne. Sinon, vous ne devez rien.</p>
+<p>Le nom Brixel vient de brique et pixel. Un site, comme un commerce, ça se bâtit sur du solide.</p>
+<a class="btn" href="index.html#contact">Réserver mon appel gratuit</a></div>
+<div class="brick glass"><div class="bx"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div><h3>Brixel Pro</h3><p style="color:#c9d2f3">Sites web pour commerces d'ici<br>13540, rue Paul-Émile-Borduas, Mirabel (Québec)<br><a href="mailto:alexis@brixelpro.com" style="color:var(--chantier)">alexis@brixelpro.com</a></p></div></div>
+<h2 style="font-size:clamp(32px,5vw,56px);font-weight:900;margin-top:80px">Nos engagements</h2>
+<div class="eg" style="margin-top:24px"><div class="e glass"><h3>Seulement du vrai</h3><p>Votre vrai menu, vos vrais prix, vos vrais avis. On n’invente rien sur votre commerce.</p></div><div class="e glass"><h3>Vous voyez avant de payer</h3><p>On vous montre votre site refait. S’il ne vous plaît pas, vous ne devez rien.</p></div><div class="e glass"><h3>Un prix clair</h3><p>499,99 $, tout inclus. Pas de frais cachés, pas d’abonnement.</p></div><div class="e glass"><h3>On reste là après</h3><p>Une modification? Un simple courriel suffit.</p></div></div></section>
+</main>
+<footer class="foot">
+  <div><b>Brixel Pro</b>Sites web pour commerces d'ici. On refait le site de votre commerce, avec votre vrai contenu, pour 499,99 $, tout inclus.</div>
+  <div><b>Pages</b><a href="index.html">Accueil</a><a href="realisations.html">Réalisations</a><a href="inclus.html">Ce qui est inclus</a><a href="faq.html">Questions</a><a href="a-propos.html">À propos</a></div>
+  <div><b>Nous joindre</b><a href="mailto:alexis@brixelpro.com">alexis@brixelpro.com</a>13540, rue Paul-Émile-Borduas<br>Mirabel (Québec) J7N 3J7<a href="index.html#contact" style="color:var(--chantier);margin-top:8px">Réserver un appel gratuit</a></div>
+</footer>
+<script>
+(function(){const s=document.getElementById('sheet'),o=document.querySelector('.top .menu-btn'),x=s.querySelector('.x');
+const set=v=>{s.classList.toggle('open',v);o.setAttribute('aria-expanded',v);document.body.style.overflow=v?'hidden':'';if(v)x.focus()};
+o.onclick=()=>set(true);x.onclick=()=>set(false);s.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
+</script>
+</body>
+</html>
