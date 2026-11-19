@@ -11,8 +11,8 @@ addEventListener('DOMContentLoaded',()=>{
   const c=document.getElementById('bg');
   if(!window.THREE){return}
   const mobile=innerWidth<700;
-  const R=new THREE.WebGLRenderer({canvas:c,antialias:true,alpha:true,powerPreference:'low-power'});
-  R.setPixelRatio(Math.min(devicePixelRatio,mobile?1.5:2));
+  const R=new THREE.WebGLRenderer({canvas:c,antialias:!mobile,alpha:true,powerPreference:'low-power'});
+  R.setPixelRatio(mobile?1:Math.min(devicePixelRatio,2));
   const S=new THREE.Scene();S.fog=new THREE.Fog(0x060b22,14,34);
   const cam=new THREE.PerspectiveCamera(50,1,.1,80);cam.position.set(0,0,18);
   S.add(new THREE.HemisphereLight(0xbfd0ff,0x0b1640,.7));
@@ -28,7 +28,7 @@ addEventListener('DOMContentLoaded',()=>{
   ];
   const edgeMat=new THREE.LineBasicMaterial({color:0xffffff,transparent:true,opacity:.18});
   const edges=new THREE.EdgesGeometry(geo);
-  const N=mobile?34:60,bricks=[];
+  const N=mobile?22:60,bricks=[];
   for(let i=0;i<N;i++){
     const m=new THREE.Mesh(geo,mats[i%7===0?0:i%5===0?2:i%3===0?0:(i%2?1:3)]);
     m.add(new THREE.LineSegments(edges,edgeMat));
@@ -41,7 +41,7 @@ addEventListener('DOMContentLoaded',()=>{
     S.add(m);bricks.push(m)}
   let t0=null,burstAt=(!hasIntro||RM||seen)?-10:null;
   window.__burst=()=>{burstAt=performance.now()/1000};
-  const size=()=>{const w=innerWidth,h=innerHeight;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()};size();addEventListener('resize',size);
+  let lw=0;const size=()=>{const w=innerWidth,h=Math.max(innerHeight,screen.height||0);if(mobile&&w===lw)return;lw=w;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix()};size();addEventListener('resize',size);
   let px=0,py=0,tx=0,ty=0;
   addEventListener('pointermove',e=>{tx=(e.clientX/innerWidth-.5);ty=(e.clientY/innerHeight-.5)},{passive:true});
   addEventListener('deviceorientation',e=>{if(e.gamma==null)return;tx=Math.max(-.5,Math.min(.5,e.gamma/60));ty=Math.max(-.5,Math.min(.5,(e.beta-45)/60))},{passive:true});
