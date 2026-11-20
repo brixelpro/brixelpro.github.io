@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="fr-CA">
 <head>
@@ -9,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Brixel Pro","email":"alexis@brixelpro.com","address":{"@type":"PostalAddress","streetAddress":"13540, rue Paul-Émile-Borduas","addressLocality":"Mirabel","addressRegion":"QC","postalCode":"J7N 3J7","addressCountry":"CA"},"priceRange":"499,99 $","areaServed":"Québec"}</script>
-<link rel="stylesheet" href="assets/site.css?v=8">
+<link rel="stylesheet" href="assets/site.css?v=9">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="assets/bg.js?v=8" defer></script>
 </head>
@@ -137,8 +138,8 @@
   <h2 id="t2">Ce que vos clients voient, dès la première seconde.</h2>
   <p class="sub">La plupart des gens cherchent un resto sur leur cellulaire. Voici ce qui change pour eux, et pour vous.</p>
   <div class="ch-wrap">
-    <div class="ch-phone"><div class="phone"><div class="screen"><div class="layer new" id="new2">
-      <div class="scroll" id="sc2">
+    <div class="ch-phone"><p class="swipe-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Glissez sur le téléphone</p><div class="phone"><div class="screen"><div class="swipe-badge" id="sbadge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 9l5-5 5 5M7 15l5 5 5-5"/></svg>Glissez ici</div><div class="layer new" id="new2">
+      <div class="scroll" id="sc2" tabindex="0" aria-label="Exemple de nouveau site : glissez pour faire défiler">
         <header><h4>Chez Ginette</h4><p>Casse-croûte · Mirabel</p><div class="acts"><span>Appeler</span><span>Voir le menu</span></div></header>
         <section><h5>Le menu</h5><div class="cat">Les classiques</div><div class="item"><b>Poutine régulière</b><em>9,50 $</em></div><div class="item"><b>Hot-dog steamé</b><em>3,25 $</em></div><div class="item"><b>Club sandwich</b><em>14,95 $</em></div><div class="cat">Sur le gril</div><div class="item"><b>Burger maison</b><em>11,75 $</em></div><div class="item"><b>Guédille au poulet</b><em>8,95 $</em></div><div class="item"><b>Assiette hot chicken</b><em>15,50 $</em></div></section>
         <section><h5>Ce que nos clients disent</h5><div class="rev"><div class="st">★★★★★</div>La meilleure poutine du coin, sauce maison parfaite.<small>Exemple d'avis Google</small></div><div class="rev"><div class="st">★★★★★</div>Service rapide et sympathique, on revient chaque vendredi.<small>Exemple d'avis Google</small></div><div class="rev"><div class="st">★★★★☆</div>Portions généreuses, prix honnêtes.<small>Exemple d'avis Google</small></div></section>
@@ -282,18 +283,21 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
     const corps=`Bonjour Alexis,\n\nJ'aimerais que vous m'appeliez pour l'appel gratuit.\n\nMoment choisi : ${jour} à ${heure}\nNom : ${f.nom.value.trim()}\nTéléphone : ${f.tel.value.trim()}\nCommerce : ${f.commerce.value.trim()}\nCourriel : ${f.courriel.value.trim()}\nSite actuel : ${f.site.value.trim()||'aucun'}\n`;
     location.href=`mailto:alexis@brixelpro.com?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
     err.textContent='';});
-  // scroll : le téléphone suit les étapes
-  const sc2=document.getElementById('sc2'),call2=document.getElementById('call2'),steps=[...document.querySelectorAll('.step')];
-  const chg=document.querySelector('.change'),scrWin=sc2.parentNode;let tk=false;
-  const sync=()=>{tk=false;const r=chg.getBoundingClientRect(),span=Math.max(1,r.height-innerHeight*.6);
-    const p=Math.min(1,Math.max(0,(-r.top+innerHeight*.2)/span)),max=Math.max(0,sc2.scrollHeight-scrWin.clientHeight+70);
-    sc2.style.transform=`translate3d(0,${-p*max}px,0)`};
-  addEventListener('scroll',()=>{if(!tk){tk=true;requestAnimationFrame(sync)}},{passive:true});addEventListener('resize',sync);sync();
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(!e.isIntersecting)return;steps.forEach(s=>s.classList.toggle('on',s===e.target));
-    const cap=document.getElementById('cap');if(cap&&cap.dataset.k!==e.target.dataset.y+(e.target.dataset.call||'')){cap.dataset.k=e.target.dataset.y+(e.target.dataset.call||'');cap.innerHTML='<div>'+e.target.innerHTML+'</div>'}call2.classList.toggle('pulse',!!e.target.dataset.call)})},{rootMargin:'-45% 0px -45% 0px'});
-  steps.forEach(s=>io.observe(s));
+  // le téléphone défile seulement quand on glisse DESSUS; à côté, la page défile normalement
+  const sc2=document.getElementById('sc2'),call2=document.getElementById('call2'),steps=[...document.querySelectorAll('.step')],cap=document.getElementById('cap'),badge=document.getElementById('sbadge');
+  let cur=-1;
+  const show=i=>{if(i===cur)return;cur=i;const st=steps[i];steps.forEach(s=>s.classList.toggle('on',s===st));
+    cap.innerHTML='<div>'+st.innerHTML+'</div>';call2.classList.toggle('pulse',!!st.dataset.call)};
+  const onSc=()=>{const max=Math.max(1,sc2.scrollHeight-sc2.clientHeight),p=sc2.scrollTop/max;
+    show(p<.12?0:p<.5?1:p<.93?2:3);if(sc2.scrollTop>8)badge.classList.add('gone')};
+  sc2.addEventListener('scroll',onSc,{passive:true});show(0);
+  // sur ordinateur : cliquer une étape fait défiler le téléphone
+  const tgt=[0,.3,.75,1];
+  steps.forEach((st,i)=>{st.tabIndex=0;st.addEventListener('click',()=>{const max=sc2.scrollHeight-sc2.clientHeight;sc2.scrollTo({top:tgt[i]*max,behavior:RM?'auto':'smooth'})})});
 })();
 </script>
 
 </body>
 </html>
+
+</body></html>

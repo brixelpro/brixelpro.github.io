@@ -272,3 +272,23 @@ html,body{overflow-anchor:none}
 
 #sc2{transition:none!important}
 .handle button{touch-action:none}
+
+/* ===== section « ce qui change » : plus collante, on glisse SUR le téléphone ===== */
+.ch-phone,.ch-phone[class]{position:relative!important;top:auto!important;flex-direction:column;align-items:center;gap:12px}
+#new2 .scroll,#sc2{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y;scrollbar-width:none;padding-bottom:70px;transform:none!important}
+#sc2::-webkit-scrollbar{display:none}
+.swipe-hint{display:flex;align-items:center;gap:8px;font:700 15px "Instrument Sans",system-ui,sans-serif;color:var(--chantier);margin:0}
+.swipe-hint svg{width:20px;animation:bob 1.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+.swipe-badge{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);z-index:6;pointer-events:none;display:flex;align-items:center;gap:6px;background:rgba(13,30,82,.9);color:var(--chantier);font:700 13px "Instrument Sans",system-ui,sans-serif;padding:9px 14px;border-radius:99px;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.35);transition:opacity .4s}
+.swipe-badge svg{width:18px;animation:bob 1.2s ease-in-out infinite}
+.swipe-badge.gone{opacity:0}
+.step{min-height:0!important;cursor:pointer;padding:22px 0}
+.steps{margin-top:0!important;padding-bottom:0!important;justify-content:center}
+@media(min-width:900px){.ch-wrap{align-items:center}.ch-phone .phone{width:280px}}
+@media(max-width:899px){
+  .steps{display:none}
+  .ch-phone{background:none!important;margin:0!important;padding:0!important;border-radius:0}
+  .ch-phone .phone{width:min(220px,58vw)!important}
+  .cap{height:auto!important;min-height:150px!important}
+}
