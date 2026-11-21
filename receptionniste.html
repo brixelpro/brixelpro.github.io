@@ -295,6 +295,9 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
 const AGENT_ID='agent_9601m7x3dps6eayajhwthafdc30c';
 const $=id=>document.getElementById(id);
 let conv=null,busy=false,t0=0,clock=null;
+const sdk=import('https://cdn.jsdelivr.net/npm/@elevenlabs/client@1.37.1/+esm');sdk.catch(()=>{});
+const AC=window.AudioContext||window.webkitAudioContext;
+function unlock(){try{const c=new AC();const b=c.createBuffer(1,1,22050),n=c.createBufferSource();n.buffer=b;n.connect(c.destination);n.start(0);c.resume&&c.resume();setTimeout(()=>c.close&&c.close(),1500)}catch(_){}}
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function add(who,text){if(!text)return;const c=$('chat');c.querySelector('.l-hello')?.remove();
   c.insertAdjacentHTML('beforeend',`<div class="l-msg ${who==='ai'?'l-ai':'l-me'}"><small>${who==='ai'?'Léa':'Vous'}</small>${esc(text)}</div>`);c.scrollTop=c.scrollHeight}
@@ -304,24 +307,30 @@ function ui(on){$('go').classList.toggle('l-on',on);$('golbl').textContent=on?'R
 function fail(msg){$('err').textContent=msg;$('err').hidden=false}
 async function start(){
   if(busy)return;busy=true;$('err').hidden=true;$('state').textContent='Connexion…';
+  let guard=null;
   try{
-    await navigator.mediaDevices.getUserMedia({audio:true});
-    const {Conversation}=await import('https://cdn.jsdelivr.net/npm/@elevenlabs/client/+esm');
+    if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw Object.assign(new Error('nomic'),{name:'NoMic'});
+    const mic=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});
+    mic.getTracks().forEach(t=>t.stop());
+    const {Conversation}=await sdk;
     $('chat').innerHTML='';
+    guard=setTimeout(()=>{if(!conv||$('timer').textContent.indexOf('En appel')<0){fail('La connexion est lente. Réessayez, ou appelez Léa au 450-485-0383.')}},15000);
     conv=await Conversation.startSession({
       agentId:AGENT_ID,connectionType:'websocket',
-      onConnect:()=>{ui(true);$('state').textContent='Ça sonne…'},
-      onDisconnect:()=>{conv=null;ui(false)},
-      onError:()=>fail('La ligne a coupé. Réessayez dans un instant.'),
+      onConnect:()=>{clearTimeout(guard);ui(true);$('state').textContent='Ça sonne…'},
+      onDisconnect:()=>{clearTimeout(guard);conv=null;ui(false)},
+      onError:()=>fail('La ligne a coupé. Réessayez, ou appelez Léa au 450-485-0383.'),
       onModeChange:({mode})=>{const talk=mode==='speaking';$('orb').className='l-orb '+(talk?'l-talk':'l-listen');$('state').textContent=talk?'Elle parle…':'Elle vous écoute'},
       onMessage:({message,source})=>add(source==='ai'?'ai':'me',message)
     });
   }catch(e){
+    clearTimeout(guard);conv=null;
     $('state').textContent='';
-    fail(e&&e.name==='NotAllowedError'?'Le micro est bloqué. Autorisez le micro pour ce site dans votre navigateur, puis réessayez.':'Impossible de démarrer la démo pour le moment. Réessayez dans un instant.');
+    const n=e&&e.name;
+    fail(n==='NotAllowedError'||n==='SecurityError'?'Le micro est bloqué. Autorisez le micro pour ce site (sur iPhone : le « aA » ou le cadenas dans la barre d\'adresse), puis réessayez. Ou appelez Léa au 450-485-0383.':n==='NotFoundError'||n==='NoMic'?'Aucun micro trouvé sur cet appareil. Appelez Léa au 450-485-0383.':'Impossible de démarrer la démo pour le moment. Réessayez, ou appelez Léa au 450-485-0383.');
   }finally{busy=false}
 }
-$('go').addEventListener('click',async()=>{if(conv){try{await conv.endSession()}catch(_){}conv=null;ui(false)}else start()});
+$('go').addEventListener('click',async()=>{if(conv){try{await conv.endSession()}catch(_){}conv=null;ui(false)}else{unlock();start()}});
 </script>
 <script>/* ouvrir toujours en haut de la page, sauf lien vers une section (#forfaits) */
 if(!location.hash){try{history.scrollRestoration="manual"}catch(e){}scrollTo(0,0);addEventListener("pageshow",function(){if(!location.hash)scrollTo(0,0)})}
