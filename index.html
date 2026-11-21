@@ -34,7 +34,7 @@
       <span class="prix">499,99 $, tout inclus</span>
     </div>
     <p class="note">Rien à payer si l'aperçu ne vous plaît pas.</p>
-      <a class="lea-pill" href="#forfaits"><b>Nouveau</b><span>Ajoutez Léa, notre réceptionniste IA, et payez votre site moins cher</span><i aria-hidden="true">↓</i></a>
+      <a class="lea-pill" href="#lea"><b>Nouveau</b><span>Ajoutez Léa, notre réceptionniste IA, et payez votre site moins cher</span><i aria-hidden="true">↓</i></a>
   </div>
 
   <div class="stage">
@@ -167,6 +167,140 @@
   </ol>
 </section>
 
+
+<style>
+
+.lea{--plan: #16307a; --nuit: #0d1e52; --trait: #3a58b8; --chantier: #ffc72c; --craie: #f3f5ff; --vert: #3ddc84; --pad: clamp(20px,5vw,64px);}
+.lea *{box-sizing: border-box; margin: 0px; padding: 0px; min-width: 0px;}
+.lea{background: radial-gradient(120% 80% at 70% 0%, rgb(26, 47, 134) 0%, rgb(11, 22, 64) 45%, rgb(6, 11, 34) 100%) fixed; color: var(--craie); font: 400 17px / 1.6 "Instrument Sans", system-ui, sans-serif; min-height: 100svh;}
+.lea a{color: inherit;}
+.lea :focus-visible{outline: 3px solid var(--chantier); outline-offset: 3px; border-radius: 6px;}
+.lea h1,.lea h2,.lea h3{font-family: Archivo, sans-serif; font-variation-settings: "wdth" 112; line-height: 0.98; letter-spacing: -0.02em;}
+.lea .l-call{display: inline-flex; align-items: center; gap: 10px; margin-left: 6px; font-style: normal; font-variant: tabular-nums; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-weight: 700; font-stretch: normal; font-size: 18px; line-height: normal; font-family: "Instrument Sans", sans-serif; color: var(--craie); text-decoration: none; padding: 16px 6px;}
+.lea .l-call span{color: var(--chantier);}
+.lea .l-call:hover{text-decoration: underline;}
+.lea .l-plans{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr)); gap: 16px; align-items: stretch;}
+.lea .l-plan{position: relative; display: flex; flex-direction: column; background: rgba(243, 245, 255, 0.06); border: 1px solid rgba(243, 245, 255, 0.14); border-radius: 26px; padding: 28px 24px;}
+.lea .l-plan.l-star{background: linear-gradient(rgba(255, 199, 44, 0.16), rgba(255, 199, 44, 0.05)); border: 2px solid var(--chantier);}
+.lea .l-plan .l-ribbon{position: absolute; top: -13px; left: 24px; background: var(--chantier); color: var(--nuit); font: 700 13px "Instrument Sans", sans-serif; padding: 4px 12px; border-radius: 99px;}
+.lea .l-plan h3{font-size: 24px; font-weight: 900; margin-bottom: 6px;}
+.lea .l-plan .l-who2{color: rgb(170, 182, 230); font-size: 15px; margin-bottom: 16px;}
+.lea .l-plan .l-amt{font-style: normal; font-variant: tabular-nums; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-weight: 900; font-stretch: normal; font-size: 52px; line-height: 1; font-family: Archivo, sans-serif; font-variation-settings: "wdth" 80; color: var(--chantier);}
+.lea .l-plan .l-amt small{font-size: 20px; font-weight: 700; color: var(--craie); margin-left: 4px;}
+.lea .l-plan .l-sub{color: rgb(215, 222, 250); font-size: 15px; margin: 6px 0px 18px; min-height: 24px;}
+.lea .l-plan ul{list-style: none; display: grid; gap: 9px; margin-bottom: 24px; flex: 1 1 0%;}
+.lea .l-plan li{display: flex; gap: 10px; font-size: 16px; color: rgb(230, 234, 255);}
+.lea .l-plan li svg{width: 18px; flex: 0 0 auto; margin-top: 4px;}
+.lea .l-plan .l-btn{width: 100%; font-size: 17px; padding: 16px 20px; min-height: 52px;}
+.lea .l-plan .l-btn.l-ghost{background: transparent; color: var(--craie); box-shadow: rgba(243, 245, 255, 0.35) 0px 0px 0px 2px inset;}
+.lea .l-fine{color: rgb(170, 182, 230); font-size: 14px; margin-top: 18px; max-width: 52em;}
+.lea .l-steps{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 14px; counter-reset: s 0;}
+.lea .l-step{counter-increment: s 1; padding: 22px; border-left: 3px solid var(--chantier); background: rgba(243, 245, 255, 0.04); border-radius: 0px 18px 18px 0px;}
+.lea .l-step::before{content: counter(s); display: block; font: 900 40px / 1 Archivo, sans-serif; color: var(--chantier); margin-bottom: 8px;}
+.lea .l-step b{display: block; font: 800 19px Archivo, sans-serif; margin-bottom: 4px;}
+.lea .l-step p{color: rgb(215, 222, 250); font-size: 16px;}
+.lea .l-final{text-align: center; padding: 70px var(--pad) 100px; max-width: 900px; margin: auto;}
+.lea .l-final h2{font-size: clamp(30px, 4.6vw, 52px); font-weight: 900; margin-bottom: 16px; text-wrap: balance;}
+.lea .l-final p{color: rgb(215, 222, 250); margin-bottom: 28px; font-size: 18px;}
+.lea .l-hero{padding: clamp(40px,7vw,90px) var(--pad) 60px; display: grid; grid-template-columns: 1fr; gap: 44px; align-items: center; max-width: 1240px; margin: auto;}
+@media (min-width: 900px){.lea .l-hero{grid-template-columns: 1.1fr 0.9fr;}
+}
+.lea .l-tag{display: inline-block; background: rgba(255, 199, 44, 0.14); color: var(--chantier); font: 700 14px "Instrument Sans", sans-serif; padding: 6px 12px; border-radius: 99px; margin-bottom: 18px;}
+.lea h1{font-size: clamp(38px, 6.4vw, 82px); font-weight: 900; text-wrap: balance;}
+.lea h1 span{display: block; color: var(--chantier); font-variation-settings: "wdth" 75; font-weight: 800;}
+.lea .l-lead{font-size: clamp(18px, 2.2vw, 21px); color: rgb(215, 222, 250); max-width: 30em; margin: 22px 0px 30px;}
+.lea .l-btn{display: inline-flex; align-items: center; justify-content: center; gap: 12px; background: var(--chantier); color: var(--nuit); font: 700 18px / 1.15 "Instrument Sans", sans-serif; padding: 19px 28px; border-radius: 999px; border: 0px; cursor: pointer; min-height: 56px; transition: transform 0.15s, background 0.2s; text-align: left;}
+.lea .l-btn:active{transform: scale(0.97);}
+.lea .l-btn svg{width: 22px; flex: 0 0 auto;}
+.lea .l-btn.l-on{background: rgb(226, 59, 48); color: rgb(255, 255, 255);}
+.lea .l-note{font-size: 14px; color: rgb(170, 182, 230); margin-top: 14px; max-width: 34em;}
+.lea .l-err{margin-top: 14px; color: rgb(255, 180, 174); font-weight: 600; font-size: 15px;}
+.lea .l-stage{display: flex; justify-content: center;}
+.lea .l-phone{position: relative; width: min(330px, 86vw); aspect-ratio: 9 / 18.5; border-radius: 46px; background: rgb(5, 9, 28); padding: 12px; box-shadow: rgb(43, 63, 134) 0px 0px 0px 2px, rgba(0, 0, 0, 0.55) 0px 40px 80px, rgba(255, 199, 44, 0.14) 0px 0px 140px;}
+.lea .l-phone::before{content: ""; position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 88px; height: 25px; border-radius: 20px; background: rgb(5, 9, 28); z-index: 3;}
+.lea .l-screen{position: relative; height: 100%; border-radius: 35px; overflow: hidden; background: linear-gradient(rgb(19, 42, 110), rgb(8, 18, 50)); display: flex; flex-direction: column; padding: 62px 16px 18px;}
+.lea .l-who{text-align: center;}
+.lea .l-who b{display: block; font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-weight: 800; font-stretch: normal; font-size: 25px; line-height: normal; font-family: Archivo, sans-serif; font-variation-settings: "wdth" 105;}
+.lea .l-who small{display: block; color: rgb(170, 182, 230); font-size: 14px; font-variant-numeric: tabular-nums; min-height: 22px;}
+.lea .l-orb{width: 92px; height: 92px; margin: 16px auto 8px; border-radius: 50%; background: radial-gradient(circle at 35% 30%,#fff3c4,var(--chantier) 45%,#c98a00); box-shadow: rgba(255, 199, 44, 0.5) 0px 0px 0px 0px; transition: transform 0.2s;}
+.lea .l-orb.l-talk{animation: 1s ease-in-out 0s infinite normal none running pulse;}
+.lea .l-orb.l-listen{background: radial-gradient(circle at 35% 30%,#d6ffe8,var(--vert) 45%,#16884a);}
+@keyframes pulse { 
+  50% { transform: scale(1.08); box-shadow: rgba(255, 199, 44, 0) 0px 0px 0px 18px; }
+}
+.lea .l-state{text-align: center; font-weight: 600; font-size: 14px; color: var(--chantier); min-height: 22px;}
+.lea .l-chat{flex: 1 1 0%; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; padding: 12px 2px 4px; scroll-behavior: smooth;}
+.lea .l-msg{max-width: 86%; padding: 9px 12px; border-radius: 16px; font-size: 14px; line-height: 1.4; animation: 0.3s ease 0s 1 normal both running in;}
+.lea .l-msg small{display: block; font-size: 11px; opacity: 0.7; margin-bottom: 2px;}
+.lea .l-ai{background: rgba(243, 245, 255, 0.1); align-self: flex-start; border-bottom-left-radius: 4px;}
+.lea .l-me{background: var(--chantier); color: var(--nuit); align-self: flex-end; border-bottom-right-radius: 4px;}
+.lea .l-hello{margin: auto; text-align: center; color: rgb(170, 182, 230); font-size: 14px; padding: 0px 10px;}
+@keyframes in { 
+  0% { opacity: 0; transform: translateY(8px); }
+}
+.lea .l-band{padding: 20px var(--pad) 90px; max-width: 1240px; margin: auto;}
+.lea .l-band h2{font-size: clamp(28px, 4vw, 44px); font-weight: 900; margin-bottom: 22px;}
+.lea .l-grid{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 14px;}
+.lea .l-card{background: rgba(243, 245, 255, 0.06); border: 1px solid rgba(243, 245, 255, 0.12); border-radius: 22px; padding: 22px;}
+.lea .l-card b{display: block; font: 800 19px Archivo, sans-serif; margin-bottom: 6px; color: var(--chantier);}
+.lea .l-card p{color: rgb(215, 222, 250); font-size: 16px;}
+@keyframes pop { 
+  0% { transform: scale(0) rotate(-20deg); opacity: 0; }
+}
+@keyframes out { 
+  100% { opacity: 0; visibility: hidden; }
+}
+@media (prefers-reduced-motion: reduce){.lea .l-orb.l-talk{animation: auto ease 0s 1 normal none running none;}
+.lea .l-msg{animation: auto ease 0s 1 normal none running none;}
+}
+.lea .l-plan .l-site{display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; background: rgba(61, 220, 132, 0.12); border: 1px dashed rgba(61, 220, 132, 0.6); border-radius: 14px; padding: 12px 14px; margin: 0px 0px 18px;}
+.lea .l-plan .l-site b{color: rgb(61, 220, 132); font: 800 17px Archivo, sans-serif;}
+.lea .l-plan .l-site span{color: rgb(170, 182, 230); font-size: 14px; text-decoration: line-through;}
+.lea{background:none!important;min-height:0!important}
+.lea .l-hero{padding-top:clamp(120px,16vw,170px)!important}
+
+.lea h2.l-h1{font-size:clamp(38px,6.4vw,82px);font-weight:900;text-wrap:balance}
+.lea h2.l-h1 span{display:block;color:var(--chantier);font-variation-settings:"wdth" 75;font-weight:800}
+#lea .l-hero{padding-top:clamp(40px,7vw,90px)!important}
+#lea{scroll-margin-top:70px}
+</style>
+<div class="lea" id="lea">
+<section class="l-hero">
+  <div>
+    <span class="l-tag">Nouveau chez Brixel Pro</span>
+    <h2 class="l-h1">Voici Léa. <span>Votre réceptionniste IA.</span></h2>
+    <p class="l-lead">Léa répond au téléphone de votre commerce et prend les commandes comme une vraie employée, en français et en anglais. Prenez-la avec votre site web neuf et votre site coûte moins cher. Essayez-la : commandez une pizza à notre pizzéria démo.</p>
+    <button class="l-btn" id="lea-go" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span id="lea-golbl">Essayez votre future réceptionniste</span></button>
+    <a class="l-call" href="tel:+14504850383">ou appelez-la : <span>450-485-0383</span></a>
+    <p class="l-err" id="lea-err" hidden></p>
+    <p class="l-note">Avec le bouton, votre navigateur demande l'accès au micro : parlez-lui comme au téléphone. Pizzéria fictive, à titre d'exemple. Les appels de démo peuvent être enregistrés pour améliorer le service.</p>
+  </div>
+  <div class="l-stage">
+    <div class="l-phone">
+      <div class="l-screen">
+        <div class="l-who"><b>Pizzéria Brixel</b><small id="lea-timer">Pizzéria démo · Mirabel</small></div>
+        <div class="l-orb" id="lea-orb" aria-hidden="true"></div>
+        <div class="l-state" id="lea-state" aria-live="polite"></div>
+        <div class="l-chat" id="lea-chat" aria-live="polite"><p class="l-hello">Appuyez sur le bouton, puis dites par exemple : « Bonjour, j'aimerais commander une pizza pepperoni fromage. »</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="l-band" aria-labelledby="t-fait">
+  <h2 id="t-fait">C'est qui, Léa?</h2>
+  <div class="l-grid">
+    <div class="l-card"><b>Répond à chaque appel</b><p>Jour, soir et fin de semaine. Plusieurs appels en même temps, sans mettre personne en attente.</p></div>
+    <div class="l-card"><b>Prend les commandes</b><p>Pour emporter ou en livraison : items, extras, adresse, numéro de téléphone et total avec taxes.</p></div>
+    <div class="l-card"><b>Vous texte le bon de commande</b><p>Chaque commande arrive par texto à votre cell ou à celui du resto. Le client reçoit aussi sa confirmation.</p></div>
+    <div class="l-card"><b>Transfère au besoin</b><p>Un client veut parler à quelqu'un? À la fin de l'appel, elle lui offre de le transférer à votre équipe.</p></div>
+    <div class="l-card"><b>Travaille avec votre site</b><p>Elle connaît vos heures, votre adresse et votre menu, et elle renvoie les curieux vers votre site web.</p></div>
+    <div class="l-card"><b>Parle français et anglais</b><p>Elle suit la langue du client automatiquement. Aucune touche à peser, aucun menu « faites le 1 ».</p></div>
+    <div class="l-card"><b>Augmente vos ventes</b><p>À chaque commande, elle propose un extra : un breuvage, un dessert, des frites. Poliment, une seule fois.</p></div>
+    <div class="l-card"><b>Garde un registre</b><p>Chaque commande est notée automatiquement : qui, quoi, combien, à quelle heure. Pratique pour vos comptes et vos clients réguliers.</p></div>
+  </div>
+</section>
+</div>
+
 <section class="price grid-bg" aria-labelledby="t4">
   <h2 id="t4" class="big">499,99<small>$</small></h2>
   <p class="inc">Tout inclus. Pas d'abonnement.</p>
@@ -214,7 +348,7 @@
   <span class="lf-tag">Nouveau · Léa, réceptionniste IA</span>
   <h2 id="t-lf">Ajoutez Léa. <span>Votre site coûte moins cher.</span></h2>
   <p class="lf-lead">Léa répond au téléphone de votre commerce et prend les commandes comme une vraie employée, en français et en anglais. Prenez-la avec votre site neuf : plus le forfait est gros, plus votre site est réduit.</p>
-  <div class="lf-acts"><a class="lf-try" href="receptionniste.html">Essayez Léa maintenant</a><a class="lf-tel" href="tel:+14504850383">ou appelez-la : <b>450-485-0383</b></a></div>
+  <div class="lf-acts"><a class="lf-try" href="#lea">Essayez Léa maintenant</a><a class="lf-tel" href="tel:+14504850383">ou appelez-la : <b>450-485-0383</b></a></div>
   <div class="lf-g">
     <article class="lf-c"><h3>Site web seul</h3><div class="lf-site"><small>Votre site web neuf</small><b>499,99 $</b></div><div class="lf-mo"><small>Sans réceptionniste</small><b>Aucun abonnement</b></div><p class="lf-calls">Votre site neuf, tout inclus.</p><a class="lf-btn ghost" href="#contact">Réserver mon appel</a></article>
     <article class="lf-c"><h3>Essentiel</h3><div class="lf-site"><small>Votre site web neuf</small><b>349,99 $</b><s>499,99 $</s></div><div class="lf-mo"><small>+ Léa, réceptionniste IA</small><b>149 $</b><span>/mois</span></div><p class="lf-calls">Léa répond jusqu'à 150 appels par mois.</p><a class="lf-btn ghost" href="#contact">Réserver mon appel</a></article>
@@ -350,5 +484,37 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
 </script>
 <script>/* heure : cachée tant que la journée n'est pas choisie, puis menu déroulant au lieu de 24 boutons */
 (function(){function go(){var h=document.getElementById("hours"),d=document.getElementById("days");if(!h||!d||!h.children.length)return setTimeout(go,100);var fs=h.closest("fieldset")||h.parentElement;fs.style.display="none";h.style.display="none";var s=document.createElement("select");s.id="hoursel";s.setAttribute("aria-label","Choisissez une heure");s.style.cssText="display:block;width:100%;max-width:320px;padding:14px;border:2px solid #0d1e52;border-radius:12px;background:#fff8dc;color:#0d1e52;font:600 17px Instrument Sans,system-ui,sans-serif;height:54px;cursor:pointer";var o=document.createElement("option");o.value="";o.textContent="Choisir une heure";s.appendChild(o);Array.prototype.forEach.call(h.children,function(b,i){var x=document.createElement("option");x.value=i;x.textContent=b.textContent.trim();s.appendChild(x);});h.parentNode.insertBefore(s,h.nextSibling);s.addEventListener("change",function(){var b=h.children[s.value];if(b)b.click();});d.addEventListener("click",function(e){if(e.target.closest("button")){fs.style.display="";}});}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",go);else go();})();
+</script>
+<script type="module">
+const AGENT_ID='agent_9601m7x3dps6eayajhwthafdc30c';
+const $=id=>document.getElementById('lea-'+id);
+let conv=null,busy=false,t0=0,clock=null;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function add(who,text){if(!text)return;const c=$('chat');c.querySelector('.l-hello')?.remove();
+  c.insertAdjacentHTML('beforeend',`<div class="l-msg ${who==='ai'?'l-ai':'l-me'}"><small>${who==='ai'?'Léa':'Vous'}</small>${esc(text)}</div>`);c.scrollTop=c.scrollHeight}
+function ui(on){$('go').classList.toggle('l-on',on);$('golbl').textContent=on?'Raccrocher':'Essayez votre future réceptionniste';
+  clearInterval(clock);if(on){t0=Date.now();clock=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);$('timer').textContent='En appel · '+Math.floor(s/60)+':'+String(s%60).padStart(2,'0')},500)}
+  else{$('timer').textContent='Appel terminé';$('orb').className='l-orb';$('state').textContent=''}}
+function fail(msg){$('err').textContent=msg;$('err').hidden=false}
+async function start(){
+  if(busy)return;busy=true;$('err').hidden=true;$('state').textContent='Connexion…';
+  try{
+    await navigator.mediaDevices.getUserMedia({audio:true});
+    const {Conversation}=await import('https://cdn.jsdelivr.net/npm/@elevenlabs/client/+esm');
+    $('chat').innerHTML='';
+    conv=await Conversation.startSession({
+      agentId:AGENT_ID,connectionType:'websocket',
+      onConnect:()=>{ui(true);$('state').textContent='Ça sonne…'},
+      onDisconnect:()=>{conv=null;ui(false)},
+      onError:()=>fail('La ligne a coupé. Réessayez dans un instant.'),
+      onModeChange:({mode})=>{const talk=mode==='speaking';$('orb').className='l-orb '+(talk?'l-talk':'l-listen');$('state').textContent=talk?'Elle parle…':'Elle vous écoute'},
+      onMessage:({message,source})=>add(source==='ai'?'ai':'me',message)
+    });
+  }catch(e){
+    $('state').textContent='';
+    fail(e&&e.name==='NotAllowedError'?'Le micro est bloqué. Autorisez le micro pour ce site dans votre navigateur, puis réessayez.':'Impossible de démarrer la démo pour le moment. Réessayez dans un instant.');
+  }finally{busy=false}
+}
+$('go').addEventListener('click',async()=>{if(conv){try{await conv.endSession()}catch(_){}conv=null;ui(false)}else start()});
 </script>
 </body></html>
