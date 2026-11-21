@@ -232,11 +232,11 @@
     <fieldset><legend>Choisissez une journée</legend><div class="chips" id="days"></div></fieldset>
     <fieldset><legend>Choisissez une heure</legend><div class="chips" id="hours"></div></fieldset>
     <div class="fields">
-      <label>Votre nom<input name="nom" autocomplete="name" required></label>
-      <label>Nom du commerce<input name="commerce" autocomplete="organization" required></label>
-      <label>Votre numéro de téléphone<input name="tel" type="tel" inputmode="tel" autocomplete="tel" required placeholder="450 555-1234"></label>
-      <label>Votre courriel<input name="courriel" type="email" autocomplete="email" required></label>
-      <label>Votre site actuel (si vous en avez un)<input name="site" type="url" inputmode="url" placeholder="www.moncommerce.com"></label>
+      <label>Votre nom<input name="nom" autocomplete="name" maxlength="60" required></label>
+      <label>Nom du commerce<input name="commerce" autocomplete="organization" maxlength="80" required></label>
+      <label>Votre numéro de téléphone<input name="tel" type="tel" inputmode="tel" autocomplete="tel" maxlength="14" required placeholder="450 555-1234"></label>
+      <label>Votre courriel<input name="courriel" type="email" autocomplete="email" maxlength="100" required></label>
+      <label>Votre site actuel (si vous en avez un)<input name="site" type="url" inputmode="url" maxlength="120" placeholder="www.moncommerce.com"></label>
     </div>
     <p class="err" id="err" role="alert"></p>
     <button class="btn" type="submit">Réserver mon appel</button>
@@ -345,4 +345,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
 </body>
 </html>
 
+<script>/* numéro de téléphone : 10 chiffres max, format 450 555-1234 */
+(function(){var t=document.querySelector('input[name="tel"]');if(!t)return;t.addEventListener('input',function(){var d=t.value.replace(/\D/g,'');if(d.length>10&&d.charAt(0)==='1')d=d.slice(1);d=d.slice(0,10);var o=d;if(d.length>6)o=d.slice(0,3)+' '+d.slice(3,6)+'-'+d.slice(6);else if(d.length>3)o=d.slice(0,3)+' '+d.slice(3);t.value=o;});})();
+</script>
 </body></html>
