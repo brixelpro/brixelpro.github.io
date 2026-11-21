@@ -180,46 +180,6 @@
   <p class="fine">Vous n'avez pas encore d'adresse web? On peut s'en occuper pour vous, en extra.</p>
 </section>
 
-<section class="svc" aria-labelledby="t-svc">
-<style>
-.svc{background:#0d1e52;color:#f3f5ff;padding:clamp(56px,8vw,100px) clamp(20px,5vw,64px)}
-.svc-in{max-width:1180px;margin:auto}
-.svc h2{font-family:"Archivo",sans-serif;font-variation-settings:"wdth" 112;font-size:clamp(32px,4.8vw,58px);font-weight:900;line-height:1;letter-spacing:-.02em;text-wrap:balance}
-.svc h2 span{color:#ffc72c}
-.svc-sub{color:#d7defa;font-size:clamp(17px,2vw,20px);max-width:38em;margin:16px 0 34px}
-.svc-g{display:grid;gap:16px}
-@media(min-width:800px){.svc-g{grid-template-columns:1fr 1fr}}
-.svc-c{display:flex;flex-direction:column;background:rgba(243,245,255,.06);border:1px solid rgba(243,245,255,.14);border-radius:26px;padding:28px 26px}
-.svc-c small{color:#ffc72c;font:700 13px "Instrument Sans",sans-serif;text-transform:uppercase;letter-spacing:.06em}
-.svc-c h3{font:900 clamp(24px,2.6vw,30px)/1.05 "Archivo",sans-serif;margin:8px 0 10px}
-.svc-c p{color:#d7defa;font-size:17px;flex:1}
-.svc-p{font:900 34px "Archivo",sans-serif;font-variation-settings:"wdth" 85;color:#ffc72c;margin:18px 0 16px}
-.svc-p em{font:600 16px "Instrument Sans",sans-serif;color:#d7defa;font-style:normal;margin-left:6px}
-.svc-c a{align-self:flex-start;background:#ffc72c;color:#0d1e52;font:700 17px "Instrument Sans",sans-serif;padding:15px 24px;border-radius:999px;text-decoration:none}
-.svc-c a.ghost{background:transparent;color:#f3f5ff;box-shadow:inset 0 0 0 2px rgba(243,245,255,.4)}
-</style>
-<div class="svc-in">
-  <h2 id="t-svc">Deux services. <span>Un seul contact.</span></h2>
-  <p class="svc-sub">Prenez l'un, l'autre, ou les deux ensemble. Avec le combo, votre nouveau site est à moitié prix.</p>
-  <div class="svc-g">
-    <article class="svc-c">
-      <small>Service 1 · Site web</small>
-      <h3>Votre vieux site, refait</h3>
-      <p>Lisible sur cellulaire, votre vrai menu, vos vrais avis. Vous voyez l'aperçu avant de payer quoi que ce soit.</p>
-      <div class="svc-p">499,99 $<em>une seule fois</em></div>
-      <a class="ghost" href="inclus.html">Voir ce qui est inclus</a>
-    </article>
-    <article class="svc-c">
-      <small>Service 2 · Réceptionniste IA</small>
-      <h3>Une employée de plus au téléphone</h3>
-      <p>Elle répond à chaque appel, prend les commandes et vous les envoie par texto. En français et en anglais, 24 h sur 24.</p>
-      <div class="svc-p">149 $<em>par mois, à partir de</em></div>
-      <a href="receptionniste.html">Essayez-la maintenant</a>
-    </article>
-  </div>
-</div>
-</section>
-
 <section class="rx" id="telephone" aria-labelledby="t-rx">
 <style>
 .rx{background:radial-gradient(120% 90% at 80% 0%,#1a2f86 0%,#0b1640 50%,#060b22 100%);color:#f3f5ff;padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px)}
@@ -246,7 +206,7 @@
 </style>
 <div class="rx-in">
   <div>
-    <span class="rx-tag">Service 2 · Réceptionniste IA</span>
+    <span class="rx-tag">Aussi disponible · Réceptionniste IA</span>
     <h2 id="t-rx">Votre site attire les clients. <span>Elle prend leurs commandes.</span></h2>
     <p class="rx-lead">Pendant que votre équipe cuisine et sert les clients sur place, notre réceptionniste IA répond au téléphone et prend les commandes comme une vraie employée. Elle connaît votre menu, vos heures et votre site.</p>
     <ul class="rx-list">
@@ -260,10 +220,10 @@
     </div>
   </div>
   <div class="rx-card">
-    <small>Le plus populaire</small>
-    <h3>Combo site + réceptionniste</h3>
-    <div class="big2">249,99 $<s>499,99 $</s></div>
-    <p>pour votre site neuf, à moitié prix, avec la réceptionniste à partir de 149 $/mois.</p>
+    <small>Forfait Achalandé</small>
+    <h3>Site web + réceptionniste</h3>
+    <div class="big2">249 $<span style="font-size:22px;color:#d7defa;font-weight:600;margin-left:6px">/mois</span></div>
+    <p>Votre site web neuf est inclus, avec la réceptionniste qui prend vos commandes au téléphone.</p>
     <a href="receptionniste.html#forfaits">Voir les forfaits</a>
   </div>
 </div>
@@ -280,7 +240,7 @@
       <label>Nom du commerce<input name="commerce" autocomplete="organization" required></label>
       <label>Votre numéro de téléphone<input name="tel" type="tel" inputmode="tel" autocomplete="tel" required placeholder="450 555-1234"></label>
       <label>Votre courriel<input name="courriel" type="email" autocomplete="email" required></label>
-      <label>Ce qui vous intéresse<select name="service" style="display:block;width:100%;padding:14px;border:2px solid #0d1e52;border-radius:12px;background:#fff8dc;color:#0d1e52;font:500 17px 'Instrument Sans',system-ui,sans-serif;height:52px"><option>Un nouveau site web</option><option>La réceptionniste IA</option><option>Les deux (combo)</option></select></label>
+      <label>Ce qui vous intéresse<select name="service" style="display:block;width:100%;padding:14px;border:2px solid #0d1e52;border-radius:12px;background:#fff8dc;color:#0d1e52;font:500 17px 'Instrument Sans',system-ui,sans-serif;height:52px"><option>Un nouveau site web</option><option>La réceptionniste IA</option><option>Les deux (site + réceptionniste)</option></select></label>
       <label>Votre site actuel (si vous en avez un)<input name="site" type="url" inputmode="url" placeholder="www.moncommerce.com"></label>
     </div>
     <p class="err" id="err" role="alert"></p>
