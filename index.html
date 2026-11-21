@@ -1,4 +1,5 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style></head><body>
 <!DOCTYPE html>
 <html lang="fr-CA">
 <head>
@@ -106,7 +107,7 @@
 <section class="video" aria-labelledby="tv">
   <h2 id="tv">Ce qu'on fait, en 70 secondes.</h2>
   <div class="vd-cadre">
-    <video id="bxVideo" src="brixel-pro-video-web-v2.mp4" autoplay muted loop playsinline preload="auto"></video>
+    <video id="bxVideo" src="brixel-pro-video-web-v3.mp4" autoplay muted loop playsinline preload="auto"></video>
     <button id="bxSon" class="vd-son" type="button" aria-pressed="false">🔊 Activer le son</button>
   </div>
 </section>
@@ -136,7 +137,7 @@
 
 <section class="change" aria-labelledby="t2">
   <h2 id="t2">Ce que vos clients voient, dès la première seconde.</h2>
-  <p class="sub">La plupart des gens cherchent un resto sur leur cellulaire. Voici ce qui change pour eux, et pour vous.</p>
+  <p class="sub">Vendredi, 17 h. Quelqu'un cherche où souper sur son cellulaire. Votre site est lent, il faut zoomer pour lire le menu : il choisit la place d'à côté. Voici ce qui change pour lui, et pour vous.</p>
   <div class="ch-wrap">
     <div class="ch-phone"><p class="swipe-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Glissez sur le téléphone</p><div class="phone"><div class="screen"><div class="swipe-badge" id="sbadge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 9l5-5 5 5M7 15l5 5 5-5"/></svg>Glissez ici</div><div class="layer new" id="new2">
       <div class="scroll" id="sc2" tabindex="0" aria-label="Exemple de nouveau site : glissez pour faire défiler">
@@ -267,8 +268,8 @@
 <section class="l-hero">
   <div>
     <span class="l-tag">Nouveau chez Brixel Pro</span>
-    <h2 class="l-h1">Voici Léa. <span>Votre réceptionniste IA.</span></h2>
-    <p class="l-lead">Léa répond au téléphone de votre commerce et prend les commandes comme une vraie employée, en français et en anglais. Prenez-la avec votre site web neuf et votre site coûte moins cher. Essayez-la : commandez une pizza à notre pizzéria démo.</p>
+    <h2 class="l-h1">Arrêtez de choisir. <span>Léa répond au téléphone pour vous.</span></h2>
+    <p class="l-lead">Le client devant vous ou celui au téléphone? Avec Léa, vous n'avez plus à choisir. Elle répond au téléphone de votre commerce et prend les commandes comme une vraie employée, en français et en anglais. Prenez-la avec votre site web neuf et votre site coûte moins cher. Essayez-la : commandez une pizza à notre pizzéria démo.</p>
     <button class="l-btn" id="lea-go" type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span id="lea-golbl">Essayez votre future réceptionniste</span></button>
     <a class="l-call" href="tel:+14504850383">ou appelez-la : <span>450-485-0383</span></a>
     <p class="l-err" id="lea-err" hidden></p>
@@ -284,6 +285,59 @@
       </div>
     </div>
   </div>
+</section>
+<style>
+.jr{padding:20px var(--pad) 70px;max-width:1240px;margin:auto}
+.jr h2,.vs h2{font-size:clamp(28px,4vw,44px);font-weight:900;margin-bottom:10px;text-wrap:balance}
+.jr .jr-sub,.vs .vs-sub{color:#d7defa;font-size:clamp(16px,1.8vw,19px);max-width:42em;margin-bottom:30px}
+.jr ol{list-style:none;margin:0;padding:0;position:relative}
+.jr ol:before{content:"";position:absolute;left:clamp(86px,13vw,150px);top:8px;bottom:8px;width:2px;background:linear-gradient(#ffc72c,rgba(255,199,44,.15))}
+.jr li{display:grid;grid-template-columns:clamp(72px,11vw,130px) 1fr;gap:0 clamp(28px,4vw,44px);padding:0 0 30px;position:relative}
+.jr li:before{content:"";position:absolute;left:clamp(81px,calc(13vw - 5px),145px);top:10px;width:12px;height:12px;border-radius:50%;background:#ffc72c;box-shadow:0 0 0 5px rgba(255,199,44,.18)}
+.jr time{font:900 clamp(22px,3vw,34px)/1 Archivo,sans-serif;font-variation-settings:"wdth" 85;color:#ffc72c;text-align:right;padding-top:2px}
+.jr h3{font:800 clamp(19px,2.2vw,24px)/1.2 Archivo,sans-serif;margin:0 0 6px}
+.jr .sans{color:#aab6e6;font-size:16px;margin:0 0 8px}
+.jr .avec{color:#f3f5ff;font-size:16px;margin:0;padding-left:12px;border-left:3px solid #36dea1}
+.jr .avec b{color:#36dea1}
+.vs{padding:10px var(--pad) 90px;max-width:1240px;margin:auto}
+.vs table{width:100%;border-collapse:separate;border-spacing:0;font-size:16px;background:rgba(243,245,255,.04);border:1px solid rgba(243,245,255,.12);border-radius:22px;overflow:hidden}
+.vs th,.vs td{padding:15px 18px;text-align:left;vertical-align:top;border-top:1px solid rgba(243,245,255,.1)}
+.vs thead th{border-top:0;font:800 17px Archivo,sans-serif;color:#aab6e6;background:rgba(243,245,255,.04)}
+.vs thead th.lea-col{color:#0d1e52;background:#ffc72c}
+.vs tbody th{font-weight:700;color:#f3f5ff;width:30%}
+.vs td{color:#aab6e6}
+.vs td.lea-col{color:#f3f5ff;background:rgba(255,199,44,.08);font-weight:600}
+.vs a{color:#ffc72c}
+@media(max-width:640px){.vs thead{display:none}.vs table,.vs tbody,.vs tr,.vs th,.vs td{display:block;width:auto}.vs tr{border-top:1px solid rgba(243,245,255,.12);padding:8px 0}.vs tr:first-child{border-top:0}.vs tbody th{border:0;padding:10px 16px 4px;width:auto}.vs td{border:0;padding:3px 16px}.vs td:before{display:block;font-size:12px;font-weight:700;color:#7f8ac0}.vs td:nth-of-type(1):before{content:"Un employé au téléphone"}.vs td.lea-col:before{content:"Léa";color:#ffc72c}.vs td.lea-col{background:none;padding-bottom:10px}}
+</style>
+<section class="jr" aria-labelledby="t-jr">
+  <h2 id="t-jr">Une journée au resto. Vous allez vous reconnaître.</h2>
+  <p class="jr-sub">Le téléphone ne sonne jamais au bon moment. Voici ce qui change quand Léa répond à votre place.</p>
+  <ol>
+    <li><time>11 h 40</time><div><h3>« Êtes-vous ouverts? » Pour la 12<sup>e</sup> fois aujourd'hui.</h3><p class="sans">Les heures, l'adresse, la livraison : les mêmes questions, 20 fois par jour.</p><p class="avec"><b>Avec Léa :</b> elle répond à chaque fois, avec la même patience, et elle envoie les curieux sur votre site.</p></div></li>
+    <li><time>12 h 10</time><div><h3>Le rush du midi.</h3><p class="sans">Votre employée décroche. Pendant ce temps, la file au comptoir attend.</p><p class="avec"><b>Avec Léa :</b> votre équipe est payée pour servir les clients, pas pour répondre au téléphone. Elle reste au comptoir.</p></div></li>
+    <li><time>18 h 00</time><div><h3>Vendredi soir, c'est plein.</h3><p class="sans">Le client devant vous ou celui au téléphone? Vous devez choisir, et un des deux attend.</p><p class="avec"><b>Avec Léa :</b> vous arrêtez de choisir. Vous servez le client devant vous, elle prend celui au téléphone.</p></div></li>
+    <li><time>18 h 05</time><div><h3>Trois appels en même temps.</h3><p class="sans">Une ligne, une personne. Les deux autres tombent sur la sonnerie.</p><p class="avec"><b>Avec Léa :</b> elle répond aux trois en même temps. Personne n'attend.</p></div></li>
+    <li><time>18 h 20</time><div><h3>« C'était le 245 ou le 254? »</h3><p class="sans">Une adresse mal notée, un extra oublié, un numéro illisible sur le bout de papier.</p><p class="avec"><b>Avec Léa :</b> elle répète la commande au client, puis vous l'envoie écrite, par texto. Elle propose aussi un extra, une fois, à chaque commande.</p></div></li>
+    <li><time>21 h 15</time><div><h3>C'est fermé. Ça sonne encore.</h3><p class="sans">Le client rappellera peut-être demain. Ou il appellera ailleurs.</p><p class="avec"><b>Avec Léa :</b> elle répond, donne vos heures et votre menu, et renvoie vers votre site. Le téléphone travaille, pas vous.</p></div></li>
+    <li><time>21 h 30</time><div><h3>Chez vous, enfin.</h3><p class="sans">Le cell du resto vous suit jusqu'à la table du souper.</p><p class="avec"><b>Avec Léa :</b> votre souper reste tranquille.</p></div></li>
+  </ol>
+</section>
+<section class="vs" aria-labelledby="t-vs">
+  <h2 id="t-vs">Un employé au téléphone, ou Léa?</h2>
+  <p class="vs-sub">Gardez votre monde là où il rapporte : avec vos clients. Léa s'occupe du téléphone, pour moins cher qu'un employé.</p>
+  <table>
+    <thead><tr><th scope="col"><span class="sr">Situation</span></th><th scope="col">Un employé au téléphone</th><th scope="col" class="lea-col">Léa</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Plusieurs appels en même temps</th><td>Un à la fois</td><td class="lea-col">Tous en même temps</td></tr>
+      <tr><th scope="row">Pendant le rush</th><td>Doit choisir entre le comptoir et le téléphone</td><td class="lea-col">Répond, et le comptoir reste servi</td></tr>
+      <tr><th scope="row">Le soir et la fin de semaine</th><td>Selon son horaire</td><td class="lea-col">Tous les jours, même quand c'est fermé</td></tr>
+      <tr><th scope="row">Les commandes</th><td>Notées à la main, quand il a le temps</td><td class="lea-col">Répétées au client et envoyées par texto</td></tr>
+      <tr><th scope="row">Les extras</th><td>Quand il y pense</td><td class="lea-col">Proposés une fois, à chaque commande</td></tr>
+      <tr><th scope="row">Les mêmes questions</th><td>Finit par soupirer</td><td class="lea-col">Toujours la même patience</td></tr>
+      <tr><th scope="row">Le coût</th><td>Un salaire à l'heure, payé même quand ça ne sonne pas</td><td class="lea-col">Un prix fixe par mois. <a href="#forfaits">Voir les forfaits</a></td></tr>
+    </tbody>
+  </table>
 </section>
 <section class="l-band" aria-labelledby="t-fait">
   <h2 id="t-fait">C'est qui, Léa?</h2>
@@ -373,7 +427,7 @@ section.change .step:not(.on){opacity:.8!important}
 <div class="lf-in">
   <span class="lf-tag">Nouveau · Léa, réceptionniste IA</span>
   <h2 id="t-lf">Ajoutez Léa. <span>Votre site coûte moins cher.</span></h2>
-  <p class="lf-lead">Léa répond au téléphone de votre commerce et prend les commandes comme une vraie employée, en français et en anglais. Prenez-la avec votre site neuf : plus le forfait est gros, plus votre site est réduit.</p>
+  <p class="lf-lead">Léa répond au téléphone de votre commerce et prend les commandes comme une vraie employée, en français et en anglais, pour moins cher qu'un employé au téléphone. Prenez-la avec votre site neuf : plus le forfait est gros, plus votre site est réduit.</p>
   <div class="lf-acts"><a class="lf-try" href="#lea">Essayez Léa maintenant</a><a class="lf-tel" href="tel:+14504850383">ou appelez-la : <b>450-485-0383</b></a></div>
   <div class="lf-g">
     <article class="lf-c"><h3>Site web seul</h3><div class="lf-site"><small>Votre site web neuf</small><b>499,99 $</b></div><div class="lf-mo"><small>Ou payez au mois, modifications illimitées</small><b>59,99 $</b><span>/mois × 12</span></div><p class="lf-calls">Votre site neuf, tout inclus. Modifications illimitées ensuite : 19,99 $/mois, si vous voulez.</p><a class="lf-btn ghost" href="#contact">Réserver mon appel</a></article>
