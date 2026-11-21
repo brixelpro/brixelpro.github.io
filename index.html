@@ -181,9 +181,58 @@
   <p class="fine" style="margin-top:14px"><strong style="color:#ffc72c">Nouveau : le combo site + réceptionniste IA.</strong> Une réceptionniste qui répond à vos appels et prend les commandes 24 h sur 24, et votre site à moitié prix. <a href="receptionniste.html" style="color:#ffc72c">Essayez-la et voyez les forfaits</a></p>
 </section>
 
+<section class="rx" id="telephone" aria-labelledby="t-rx">
+<style>
+.rx{background:radial-gradient(120% 90% at 80% 0%,#1a2f86 0%,#0b1640 50%,#060b22 100%);color:#f3f5ff;padding:clamp(56px,8vw,110px) clamp(20px,5vw,64px)}
+.rx-in{max-width:1180px;margin:auto;display:grid;gap:36px;align-items:center}
+@media(min-width:900px){.rx-in{grid-template-columns:1.25fr .75fr}}
+.rx-tag{display:inline-block;background:rgba(255,199,44,.14);color:#ffc72c;font:700 14px "Instrument Sans",sans-serif;padding:6px 12px;border-radius:99px;margin-bottom:16px}
+.rx h2{font-family:"Archivo",sans-serif;font-variation-settings:"wdth" 112;font-size:clamp(34px,5vw,62px);font-weight:900;line-height:.98;letter-spacing:-.02em;text-wrap:balance}
+.rx h2 span{color:#ffc72c;display:block}
+.rx-lead{color:#d7defa;font-size:clamp(17px,2vw,20px);max-width:34em;margin:20px 0 22px}
+.rx-list{list-style:none;display:grid;gap:10px;margin:0 0 28px;padding:0}
+.rx-list li{display:flex;gap:10px;font-size:17px}
+.rx-list svg{width:18px;flex:none;margin-top:5px}
+.rx-acts{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.rx-btn{display:inline-flex;align-items:center;gap:10px;background:#ffc72c;color:#0d1e52;font:700 18px "Instrument Sans",sans-serif;padding:17px 26px;border-radius:999px;text-decoration:none}
+.rx-tel{color:#f3f5ff;font:700 17px "Instrument Sans",sans-serif;text-decoration:none}
+.rx-tel b{color:#ffc72c}
+.rx-card{background:linear-gradient(180deg,rgba(255,199,44,.16),rgba(255,199,44,.05));border:2px solid #ffc72c;border-radius:26px;padding:28px 24px}
+.rx-card small{display:block;color:#ffc72c;font:700 13px "Instrument Sans",sans-serif;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.rx-card h3{font:900 26px "Archivo",sans-serif;margin-bottom:14px}
+.rx-card .big2{font:900 54px/1 "Archivo",sans-serif;font-variation-settings:"wdth" 80;color:#ffc72c}
+.rx-card .big2 s{font-size:22px;color:#aab6e6;font-weight:600;margin-left:8px}
+.rx-card p{color:#d7defa;font-size:16px;margin:8px 0 20px}
+.rx-card a{display:block;text-align:center;background:#f3f5ff;color:#0d1e52;font:700 17px "Instrument Sans",sans-serif;padding:15px;border-radius:999px;text-decoration:none}
+</style>
+<div class="rx-in">
+  <div>
+    <span class="rx-tag">Nouveau · Réceptionniste IA</span>
+    <h2 id="t-rx">Votre site attire les clients. <span>Votre téléphone, lui, répond-il?</span></h2>
+    <p class="rx-lead">Notre réceptionniste IA répond à tous vos appels, 24 h sur 24, et prend les commandes comme une vraie employée. Elle connaît votre menu, vos heures et votre site.</p>
+    <ul class="rx-list">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Prend les commandes pour emporter et en livraison</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Vous texte le bon de commande, le client reçoit sa confirmation</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Parle français et anglais, et transfère à votre équipe au besoin</li>
+    </ul>
+    <div class="rx-acts">
+      <a class="rx-btn" href="receptionniste.html">Essayez-la maintenant</a>
+      <a class="rx-tel" href="tel:+14504850383">ou appelez-la : <b>450-485-0383</b></a>
+    </div>
+  </div>
+  <div class="rx-card">
+    <small>Le plus populaire</small>
+    <h3>Combo site + réceptionniste</h3>
+    <div class="big2">249,99 $<s>499,99 $</s></div>
+    <p>pour votre site neuf, à moitié prix, avec la réceptionniste à partir de 149 $/mois.</p>
+    <a href="receptionniste.html#forfaits">Voir les forfaits</a>
+  </div>
+</div>
+</section>
+
 <section class="contact" id="contact" aria-labelledby="t5">
   <h2 id="t5">Voyons à quoi ressemblerait le vôtre.</h2>
-  <p>Choisissez un moment pour un appel gratuit de 15 minutes. Alexis vous appelle à l'heure choisie, regarde votre site actuel avec vous et vous montre ce qu'on peut en faire.</p>
+  <p>Choisissez un moment pour un appel gratuit de 15 minutes. Alexis vous appelle à l'heure choisie, regarde votre site actuel avec vous et vous montre ce qu'on peut en faire, sur le web comme au téléphone.</p>
   <form id="rdv" novalidate>
     <fieldset><legend>Choisissez une journée</legend><div class="chips" id="days"></div></fieldset>
     <fieldset><legend>Choisissez une heure</legend><div class="chips" id="hours"></div></fieldset>
@@ -192,6 +241,7 @@
       <label>Nom du commerce<input name="commerce" autocomplete="organization" required></label>
       <label>Votre numéro de téléphone<input name="tel" type="tel" inputmode="tel" autocomplete="tel" required placeholder="450 555-1234"></label>
       <label>Votre courriel<input name="courriel" type="email" autocomplete="email" required></label>
+      <label>Ce qui vous intéresse<select name="service" style="display:block;width:100%;padding:14px;border:2px solid #0d1e52;border-radius:12px;background:#fff8dc;color:#0d1e52;font:500 17px 'Instrument Sans',system-ui,sans-serif;height:52px"><option>Un nouveau site web</option><option>La réceptionniste IA</option><option>Les deux (combo)</option></select></label>
       <label>Votre site actuel (si vous en avez un)<input name="site" type="url" inputmode="url" placeholder="www.moncommerce.com"></label>
     </div>
     <p class="err" id="err" role="alert"></p>
@@ -207,7 +257,7 @@
 </section>
 </main>
 <footer class="foot">
-  <div><b>Brixel Pro</b>Sites web pour commerces d'ici. On refait le site de votre commerce, avec votre vrai contenu, pour 499,99 $, tout inclus.</div>
+  <div><b>Brixel Pro</b>Sites web et réceptionnistes IA pour commerces d'ici. On refait le site de votre commerce pour 499,99 $, tout inclus, et on peut répondre à vos appels.</div>
   <div><b>Pages</b><a href="index.html">Accueil</a><a href="realisations.html">Réalisations</a><a href="inclus.html">Ce qui est inclus</a><a href="receptionniste.html">Réceptionniste IA</a><a href="faq.html">Questions</a><a href="a-propos.html">À propos</a></div>
   <div><b>Nous joindre</b><a href="mailto:alexis@brixelpro.com">alexis@brixelpro.com</a>13540, rue Paul-Émile-Borduas<br>Mirabel (Québec) J7N 3J7<a href="index.html#contact" style="color:var(--chantier);margin-top:8px">Réserver un appel gratuit</a></div>
 </footer>
@@ -281,7 +331,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
     if(f.tel.value.replace(/\D/g,'').length<10){err.textContent='Vérifiez votre numéro de téléphone (10 chiffres).';f.tel.focus();return}
     if(!f.courriel.checkValidity()){err.textContent='Vérifiez votre adresse courriel.';f.courriel.focus();return}
     const sujet=`Demande d'appel — ${f.commerce.value.trim()} — ${jour} à ${heure}`;
-    const corps=`Bonjour Alexis,\n\nJ'aimerais que vous m'appeliez pour l'appel gratuit.\n\nMoment choisi : ${jour} à ${heure}\nNom : ${f.nom.value.trim()}\nTéléphone : ${f.tel.value.trim()}\nCommerce : ${f.commerce.value.trim()}\nCourriel : ${f.courriel.value.trim()}\nSite actuel : ${f.site.value.trim()||'aucun'}\n`;
+    const corps=`Bonjour Alexis,\n\nJ'aimerais que vous m'appeliez pour l'appel gratuit.\n\nMoment choisi : ${jour} à ${heure}\nNom : ${f.nom.value.trim()}\nTéléphone : ${f.tel.value.trim()}\nCommerce : ${f.commerce.value.trim()}\nCourriel : ${f.courriel.value.trim()}\nSite actuel : ${f.site.value.trim()||'aucun'}\nIntéressé par : ${f.service?f.service.value:''}\n`;
     location.href=`mailto:alexis@brixelpro.com?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
     err.textContent='';});
   // le téléphone défile seulement quand on glisse DESSUS; à côté, la page défile normalement
