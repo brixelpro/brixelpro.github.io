@@ -350,4 +350,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
 </body>
 </html>
 
+<script>/* ouvrir toujours en haut de la page, sauf lien vers une section (#contact) */
+if(!location.hash){try{history.scrollRestoration="manual"}catch(e){}scrollTo(0,0);addEventListener("pageshow",function(){if(!location.hash)scrollTo(0,0)})}
+</script>
 </body></html>
