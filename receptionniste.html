@@ -99,7 +99,9 @@ h1 span{display:block;color:var(--chantier);font-variation-settings:"wdth" 75;fo
 .card b{display:block;font:800 19px "Archivo",sans-serif;margin-bottom:6px;color:var(--chantier)}
 .card p{color:#d7defa;font-size:16px}
 .foot{padding:40px var(--pad) calc(36px + env(safe-area-inset-bottom));background:rgba(6,11,34,.9);color:#aab6e6;font-size:15px;display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between}
-.foot b{color:var(--craie)}
+.foot b{color:var(--craie);display:block;margin-bottom:8px}
+.fcol{display:flex;flex-direction:column;gap:6px;max-width:26em}
+.fcol p{margin:0}
 .foot a{color:#d7defa;text-decoration:none}
 /* intro ~2 s */
 #intro{position:fixed;inset:0;z-index:50;background:#0d1e52;display:grid;place-content:center;animation:out .45s 1.6s forwards}
@@ -123,6 +125,7 @@ h1 span{display:block;color:var(--chantier);font-variation-settings:"wdth" 75;fo
     <a class="l" href="inclus.html">Ce qui est inclus</a>
     <a class="l" href="receptionniste.html" aria-current="page">Réceptionniste IA</a>
     <a class="l" href="faq.html">Questions</a>
+    <a class="l" href="a-propos.html">À propos</a>
     <a class="cta" href="index.html#contact">Réserver un appel</a>
   </nav>
 </header>
@@ -238,8 +241,9 @@ h1 span{display:block;color:var(--chantier);font-variation-settings:"wdth" 75;fo
 </main>
 
 <footer class="foot">
-  <div><b>Brixel Pro</b> · On refait le site web des commerces d'ici, et on répond à leurs appels.</div>
-  <div><a href="mailto:alexis@brixelpro.com">alexis@brixelpro.com</a> · <a href="tel:4388860873">438-886-0873</a></div>
+  <div class="fcol"><b>Brixel Pro</b><p>Sites web et réceptionnistes IA pour commerces d'ici. On refait le site de votre commerce pour 499,99 $, tout inclus, et on peut répondre à vos appels.</p></div>
+  <div class="fcol"><b>Pages</b><a href="index.html">Accueil</a><a href="realisations.html">Réalisations</a><a href="inclus.html">Ce qui est inclus</a><a href="receptionniste.html">Réceptionniste IA</a><a href="faq.html">Questions</a><a href="a-propos.html">À propos</a></div>
+  <div class="fcol"><b>Nous joindre</b><a href="mailto:alexis@brixelpro.com">alexis@brixelpro.com</a><span>13540, rue Paul-Émile-Borduas<br>Mirabel (Québec) J7N 3J7</span><a href="index.html#contact" style="color:var(--chantier)">Réserver un appel gratuit</a></div>
 </footer>
 
 <script type="module">
