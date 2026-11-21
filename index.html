@@ -301,6 +301,45 @@
 </section>
 </div>
 
+<section class="fq" id="questions" aria-labelledby="t-fq">
+<style>
+.fq{padding:clamp(56px,8vw,100px) clamp(20px,5vw,64px);color:#f3f5ff}
+.fq-in{max-width:900px;margin:auto}
+.fq-k{color:#ffc72c;font:700 14px "Instrument Sans",sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.fq h2{font-family:"Archivo",sans-serif;font-variation-settings:"wdth" 112;font-size:clamp(34px,5vw,60px);font-weight:900;line-height:1;letter-spacing:-.02em;margin:10px 0 30px}
+.fq-l{border-top:1px solid rgba(243,245,255,.18)}
+.fq-i{border-bottom:1px solid rgba(243,245,255,.18)}
+.fq-i summary{list-style:none;display:flex;align-items:center;gap:18px;padding:22px 0;cursor:pointer}
+.fq-i summary::-webkit-details-marker{display:none}
+.fq-n{color:#aab6e6;font:700 16px "Instrument Sans",sans-serif;letter-spacing:.08em;flex:none;width:28px}
+.fq-q{flex:1;font:800 clamp(19px,2.3vw,24px)/1.2 "Archivo",sans-serif}
+.fq-x{position:relative;flex:none;width:46px;height:46px;border:2px solid rgba(243,245,255,.55);border-radius:50%;transition:transform .25s,background .2s,border-color .2s}
+.fq-x::before,.fq-x::after{content:"";position:absolute;left:50%;top:50%;width:18px;height:2px;background:#f3f5ff;transform:translate(-50%,-50%)}
+.fq-x::after{transform:translate(-50%,-50%) rotate(90deg)}
+.fq-i[open] .fq-x{transform:rotate(45deg);background:#ffc72c;border-color:#ffc72c}
+.fq-i[open] .fq-x::before,.fq-i[open] .fq-x::after{background:#0d1e52}
+.fq-i summary:hover .fq-x{border-color:#ffc72c}
+.fq-i p{color:#d7defa;font-size:clamp(16px,1.9vw,18px);line-height:1.6;padding:0 64px 24px 46px;max-width:44em}
+@media(max-width:600px){.fq-i p{padding:0 0 22px}}
+</style>
+<div class="fq-in">
+  <span class="fq-k">Questions fréquentes</span>
+  <h2 id="t-fq">Avant de vous décider</h2>
+  <div class="fq-l">
+    <details class="fq-i"><summary><span class="fq-n">01</span><span class="fq-q">Et si le site ne me plaît pas?</span><span class="fq-x" aria-hidden="true"></span></summary><p>On vous montre d’abord votre nouveau site, déjà bâti avec votre vrai menu et vos vrais avis. Un changement à faire? On l’ajuste. Vous payez seulement quand il est à votre goût. S’il ne vous plaît pas, vous ne devez rien.</p></details>
+    <details class="fq-i"><summary><span class="fq-n">02</span><span class="fq-q">Combien de temps avant que ce soit en ligne?</span><span class="fq-x" aria-hidden="true"></span></summary><p>Habituellement quelques jours après votre approbation. La dernière étape, brancher votre adresse web, prend environ 5 minutes, et on vous guide.</p></details>
+    <details class="fq-i"><summary><span class="fq-n">03</span><span class="fq-q">Est-ce qu’il y a un abonnement pour le site?</span><span class="fq-x" aria-hidden="true"></span></summary><p>Non. Le site, c’est 499,99 $ une seule fois, hébergement compris. Le seul coût annuel possible est le renouvellement de votre adresse web, payé directement à votre fournisseur, comme aujourd’hui.</p></details>
+    <details class="fq-i"><summary><span class="fq-n">04</span><span class="fq-q">J’ai déjà une page Facebook. Ça ne suffit pas?</span><span class="fq-x" aria-hidden="true"></span></summary><p>Facebook, c’est parfait pour vos nouvelles. Mais quand quelqu’un cherche votre commerce sur Google, c’est un vrai site qui le convainc : lisible sur cellulaire, votre menu au complet et un bouton pour appeler. Et votre site vous appartient.</p></details>
+    <details class="fq-i"><summary><span class="fq-n">05</span><span class="fq-q">Est-ce que mes courriels vont changer?</span><span class="fq-x" aria-hidden="true"></span></summary><p>Non. On touche seulement à ce qui affiche votre site. Votre adresse courriel continue de fonctionner comme avant.</p></details>
+    <details class="fq-i"><summary><span class="fq-n">06</span><span class="fq-q">Léa, c’est une vraie personne?</span><span class="fq-x" aria-hidden="true"></span></summary><p>Non, c’est une réceptionniste IA. Elle parle naturellement, en français et en anglais. Si un client lui demande, elle dit honnêtement qu’elle est une IA, et elle offre de le transférer à votre équipe.</p></details>
+    <details class="fq-i"><summary><span class="fq-n">07</span><span class="fq-q">Je dois changer de numéro pour avoir Léa?</span><span class="fq-x" aria-hidden="true"></span></summary><p>Non. Vous pouvez renvoyer votre numéro actuel vers elle, ou on vous donne un nouveau numéro local. On s’occupe de la configuration avec vous.</p></details>
+    <details class="fq-i"><summary><span class="fq-n">08</span><span class="fq-q">Comment je reçois les commandes prises par Léa?</span><span class="fq-x" aria-hidden="true"></span></summary><p>Par texto : le bon de commande arrive sur votre cellulaire dès que le client confirme, et le client reçoit aussi sa confirmation. Chaque commande est notée dans un registre.</p></details>
+    <details class="fq-i"><summary><span class="fq-n">09</span><span class="fq-q">Si j’arrête Léa, est-ce que je garde mon site?</span><span class="fq-x" aria-hidden="true"></span></summary><p>Oui. Les forfaits Léa sont sans engagement, et votre site est à vous pour de bon, peu importe le forfait.</p></details>
+    <details class="fq-i"><summary><span class="fq-n">10</span><span class="fq-q">Comment je paie?</span><span class="fq-x" aria-hidden="true"></span></summary><p>Par un lien de paiement sécurisé Stripe, envoyé par courriel une fois le site approuvé.</p></details>
+  </div>
+</div>
+</section>
+
 <section class="lf" id="forfaits" aria-labelledby="t-lf">
 <style>
 .lea-pill{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:9px 14px 9px 9px;border-radius:999px;background:rgba(255,199,44,.12);border:1px solid rgba(255,199,44,.45);color:#f3f5ff;text-decoration:none;font:600 15px "Instrument Sans",sans-serif;max-width:100%}
