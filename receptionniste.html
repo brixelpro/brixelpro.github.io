@@ -266,5 +266,8 @@ async function start(){
 }
 $('go').addEventListener('click',async()=>{if(conv){try{await conv.endSession()}catch(_){}conv=null;ui(false)}else start()});
 </script>
+<script>/* ouvrir toujours en haut de la page, sauf lien vers une section (#forfaits) */
+if(!location.hash){try{history.scrollRestoration="manual"}catch(e){}scrollTo(0,0);addEventListener("pageshow",function(){if(!location.hash)scrollTo(0,0)})}
+</script>
 </body>
 </html>
