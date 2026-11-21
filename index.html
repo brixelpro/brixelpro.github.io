@@ -1,4 +1,6 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+<!doctype html><html><head><meta charset=utf8>
+<script>if(location.protocol==="http:"&&/brixelpro\.com$/.test(location.hostname))location.replace("https://"+location.host+location.pathname+location.search+location.hash)</script>
+<meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style></head><body>
 <!DOCTYPE html>
 <html lang="fr-CA">
@@ -10,7 +12,13 @@
 <meta name="theme-color" content="#0d1e52">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&family=Fraunces:opsz,wght@9..144,600;9..144,800&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Brixel Pro","email":"alexis@brixelpro.com","address":{"@type":"PostalAddress","streetAddress":"13540, rue Paul-Émile-Borduas","addressLocality":"Mirabel","addressRegion":"QC","postalCode":"J7N 3J7","addressCountry":"CA"},"areaServed":"Québec"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Brixel Pro","url":"https://brixelpro.com/","logo":"https://brixelpro.com/icon-512.png","image":"https://brixelpro.com/icon-512.png","email":"alexis@brixelpro.com","address":{"@type":"PostalAddress","streetAddress":"13540, rue Paul-Émile-Borduas","addressLocality":"Mirabel","addressRegion":"QC","postalCode":"J7N 3J7","addressCountry":"CA"},"areaServed":"Québec"}</script>
+<link rel="canonical" href="https://brixelpro.com/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#0d1e52">
 <link rel="stylesheet" href="assets/site.css?v=9">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
 <script src="assets/bg.js?v=8" defer></script>
@@ -569,7 +577,7 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
 const AGENT_ID='agent_9601m7x3dps6eayajhwthafdc30c';
 const $=id=>document.getElementById('lea-'+id);
 let conv=null,busy=false,t0=0,clock=null;
-const sdk=import('https://cdn.jsdelivr.net/npm/@elevenlabs/client@1.37.1/+esm');sdk.catch(()=>{});
+const sdk=import('/lea/elevenlabs-client.mjs');sdk.catch(()=>{});
 const AC=window.AudioContext||window.webkitAudioContext;
 function unlock(){try{const c=new AC();const b=c.createBuffer(1,1,22050),n=c.createBufferSource();n.buffer=b;n.connect(c.destination);n.start(0);c.resume&&c.resume();setTimeout(()=>c.close&&c.close(),1500)}catch(_){}}
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -580,15 +588,15 @@ function ui(on){$('go').classList.toggle('l-on',on);$('golbl').textContent=on?'R
   else{$('timer').textContent='Appel terminé';$('orb').className='l-orb';$('state').textContent=''}}
 function fail(msg){$('err').textContent=msg;$('err').hidden=false}
 async function start(){
-  if(busy)return;busy=true;$('err').hidden=true;$('state').textContent='Connexion…';
-  let guard=null;
+  if(busy)return;busy=true;$('err').hidden=true;$('state').textContent='Connexion…';$('golbl').textContent='Connexion…';
+  let guard=setTimeout(()=>{if(!conv){busy=false;$('golbl').textContent='Essayez votre future réceptionniste';$('state').textContent='';fail('La démo ne démarre pas sur cet appareil. Appelez Léa au 450-485-0383.')}},15000);
   try{
+    if(!window.isSecureContext){location.replace('https://brixelpro.com'+location.pathname+'#lea');return}
     if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw Object.assign(new Error('nomic'),{name:'NoMic'});
     const mic=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});
     mic.getTracks().forEach(t=>t.stop());
     const {Conversation}=await sdk;
     $('chat').innerHTML='';
-    guard=setTimeout(()=>{if(!conv||$('timer').textContent.indexOf('En appel')<0){fail('La connexion est lente. Réessayez, ou appelez Léa au 450-485-0383.')}},15000);
     conv=await Conversation.startSession({
       agentId:AGENT_ID,connectionType:'websocket',
       onConnect:()=>{clearTimeout(guard);ui(true);$('state').textContent='Ça sonne…'},
@@ -599,7 +607,7 @@ async function start(){
     });
   }catch(e){
     clearTimeout(guard);conv=null;
-    $('state').textContent='';
+    $('state').textContent='';$('golbl').textContent='Essayez votre future réceptionniste';
     const n=e&&e.name;
     fail(n==='NotAllowedError'||n==='SecurityError'?'Le micro est bloqué. Autorisez le micro pour ce site (sur iPhone : le « aA » ou le cadenas dans la barre d\'adresse), puis réessayez. Ou appelez Léa au 450-485-0383.':n==='NotFoundError'||n==='NoMic'?'Aucun micro trouvé sur cet appareil. Appelez Léa au 450-485-0383.':'Impossible de démarrer la démo pour le moment. Réessayez, ou appelez Léa au 450-485-0383.');
   }finally{busy=false}
