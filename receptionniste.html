@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <script>if(location.protocol==="http:"&&/brixelpro\.com$/.test(location.hostname))location.replace("https://"+location.host+location.pathname+location.search+location.hash)</script>
+<script>/* toujours ouvrir en haut de la page; au rafraîchissement aussi. Seul un lien vers une section (#forfaits) amène plus bas, et seulement à l'arrivée. */
+(function(){try{history.scrollRestoration="manual"}catch(e){}
+var n=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0],again=n&&(n.type==="reload"||n.type==="back_forward");
+if(again&&location.hash)history.replaceState(null,"",location.pathname+location.search);
+var moved=false;["wheel","touchstart","keydown","pointerdown"].forEach(function(e){addEventListener(e,function(){moved=true},{passive:true,once:true})});
+function top(){if(!location.hash&&!moved)scrollTo(0,0)}
+top();addEventListener("DOMContentLoaded",top);addEventListener("load",function(){top();setTimeout(top,60)});addEventListener("pageshow",function(e){if(e.persisted)top()})})();
+</script>
 
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Léa, la réceptionniste IA — Brixel Pro</title>
@@ -352,9 +360,6 @@ async function start(){
   }finally{busy=false}
 }
 $('go').addEventListener('click',async()=>{if(conv){try{await conv.endSession()}catch(_){}conv=null;ui(false)}else{unlock();start()}});
-</script>
-<script>/* ouvrir toujours en haut de la page, sauf lien vers une section (#forfaits) */
-if(!location.hash){try{history.scrollRestoration="manual"}catch(e){}scrollTo(0,0);addEventListener("pageshow",function(){if(!location.hash)scrollTo(0,0)})}
 </script>
 <script>/* heure en direct dans la barre d'état des téléphones de démo */
 (function(){function t(){var d=new Date(),s=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');document.querySelectorAll('.sb-t').forEach(function(e){e.textContent=s})}t();setInterval(t,15000)})();

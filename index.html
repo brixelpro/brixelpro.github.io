@@ -1,5 +1,13 @@
 <!doctype html><html><head><meta charset=utf8>
 <script>if(location.protocol==="http:"&&/brixelpro\.com$/.test(location.hostname))location.replace("https://"+location.host+location.pathname+location.search+location.hash)</script>
+<script>/* toujours ouvrir en haut de la page; au rafraîchissement aussi. Seul un lien vers une section (#forfaits) amène plus bas, et seulement à l'arrivée. */
+(function(){try{history.scrollRestoration="manual"}catch(e){}
+var n=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0],again=n&&(n.type==="reload"||n.type==="back_forward");
+if(again&&location.hash)history.replaceState(null,"",location.pathname+location.search);
+var moved=false;["wheel","touchstart","keydown","pointerdown"].forEach(function(e){addEventListener(e,function(){moved=true},{passive:true,once:true})});
+function top(){if(!location.hash&&!moved)scrollTo(0,0)}
+top();addEventListener("DOMContentLoaded",top);addEventListener("load",function(){top();setTimeout(top,60)});addEventListener("pageshow",function(e){if(e.persisted)top()})})();
+</script>
 <meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style><style>
 /* ===== barre d'état iPhone sur les téléphones de démo ===== */
