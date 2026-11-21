@@ -179,10 +179,11 @@ h1 span{display:block;color:var(--chantier);font-variation-settings:"wdth" 75;fo
 
 <section class="band" id="forfaits" aria-labelledby="t-prix">
   <h2 id="t-prix">Les forfaits</h2>
-  <div class="plans" style="max-width:880px">
+  <style>.plan .site{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;background:rgba(61,220,132,.12);border:1px dashed rgba(61,220,132,.6);border-radius:14px;padding:12px 14px;margin:0 0 18px}.plan .site b{color:#3ddc84;font:800 17px "Archivo",sans-serif}.plan .site span{color:#aab6e6;font-size:14px;text-decoration:line-through}</style>
+  <div class="plans">
     <article class="plan">
       <h3>Essentiel</h3>
-      <p class="who2">Pour un commerce qui a déjà un bon site web.</p>
+      <p class="who2">Pour un commerce qui reçoit quelques appels par jour.</p>
       <div class="amt">149<small>$/mois</small></div>
       <p class="sub">Jusqu'à 150 appels par mois</p>
       <ul>
@@ -191,24 +192,40 @@ h1 span{display:block;color:var(--chantier);font-variation-settings:"wdth" 75;fo
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Transfert vers votre équipe</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Changements de menu et de prix inclus</li>
       </ul>
+      <div class="site"><b>+ Site web neuf : 349,99 $</b><span>au lieu de 499,99 $</span></div>
       <a class="btn ghost" href="index.html#contact">Réserver mon appel gratuit</a>
     </article>
     <article class="plan star">
-      <span class="ribbon">Site web inclus</span>
-      <h3>Achalandé</h3>
-      <p class="who2">Votre site web neuf et votre réceptionniste, ensemble.</p>
+      <span class="ribbon">Le plus populaire</span>
+      <h3>Standard</h3>
+      <p class="who2">Pour un resto qui sonne sans arrêt les soirs de rush.</p>
       <div class="amt">249<small>$/mois</small></div>
       <p class="sub">Jusqu'à 400 appels par mois</p>
       <ul>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg><strong>Votre site web neuf inclus</strong> (valeur de 499,99 $)</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Tout ce qu'il y a dans Essentiel</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Registre de toutes vos commandes</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Spéciaux du jour mis à jour sur demande</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Ajustements en priorité, le jour même</li>
       </ul>
-      <a class="btn" href="index.html#contact">Je veux ce forfait</a>
+      <div class="site"><b>+ Site web neuf : 199,99 $</b><span>au lieu de 499,99 $</span></div>
+      <a class="btn" href="index.html#contact">Réserver mon appel gratuit</a>
+    </article>
+    <article class="plan">
+      <h3>Premium</h3>
+      <p class="who2">Pour les gros volumes et les commerces à plusieurs lignes.</p>
+      <div class="amt">399<small>$/mois</small></div>
+      <p class="sub">Jusqu'à 900 appels par mois</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Tout ce qu'il y a dans Standard</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Message d'accueil et voix sur mesure</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Rapport mensuel de vos appels et commandes</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#ffc72c" stroke-width="3" stroke-linecap="round"><path d="M4 12l5 5L20 6"/></svg>Ligne directe avec Alexis</li>
+      </ul>
+      <div class="site"><b>+ Site web neuf : 99,99 $</b><span>au lieu de 499,99 $</span></div>
+      <a class="btn ghost" href="index.html#contact">Réserver mon appel gratuit</a>
     </article>
   </div>
-  <p class="fine">Prix fixe par mois, sans frais à la minute. Si vous dépassez souvent votre limite d'appels, on vous propose simplement le forfait supérieur. Le site web inclus dans le forfait Achalandé demande un engagement minimum de 6 mois. Vous voulez seulement un site web? C'est 499,99 $, une seule fois : <a href="index.html" style="color:var(--chantier)">voir les sites web</a>. Taxes en sus.</p>
+  <p class="fine">Prix fixe par mois, sans frais à la minute et sans engagement. Prenez votre site web neuf en même temps que la réceptionniste et il coûte moins cher : plus le forfait est gros, plus le site est réduit. Le site est à vous pour de bon. Si vous dépassez souvent votre limite d'appels, on vous propose simplement le forfait supérieur. Vous voulez seulement un site web? C'est 499,99 $, une seule fois : <a href="index.html" style="color:var(--chantier)">voir les sites web</a>. Taxes en sus.</p>
 </section>
 
 <section class="band" aria-labelledby="t-etapes">
