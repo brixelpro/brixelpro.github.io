@@ -1,7 +1,95 @@
 <!doctype html><html><head><meta charset=utf8>
 <script>if(location.protocol==="http:"&&/brixelpro\.com$/.test(location.hostname))location.replace("https://"+location.host+location.pathname+location.search+location.hash)</script>
 <meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-</style></head><body>
+</style><style>
+/* ===== barre d'état iPhone sur les téléphones de démo ===== */
+.screen,.l-screen{container-type:inline-size}
+.sb{position:absolute;top:0;left:0;right:0;z-index:8;height:38px;display:flex;align-items:center;justify-content:space-between;pointer-events:none;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",system-ui,sans-serif;font-weight:600;font-size:14px;line-height:1;letter-spacing:-.02em;height:13.6cqw;font-size:5.1cqw}
+.sb>span{width:35%;display:flex;justify-content:center;align-items:center;gap:.32em}
+.sb .sb-t{font-variant-numeric:tabular-nums}
+.sb svg{height:.74em;fill:currentColor;flex:none}
+.sb .sb-sig{width:1.12em}.sb .sb-wifi{width:1.02em}
+.sb-bat{position:relative;display:inline-grid;place-items:center;width:1.95em;height:.92em;border-radius:.3em;background:currentColor;margin:0 .2em 0 .05em;flex:none}
+.sb-bat::after{content:"";position:absolute;right:-.19em;top:50%;width:.1em;height:.34em;transform:translateY(-50%);border-radius:0 .08em .08em 0;background:currentColor;opacity:.5}
+.sb-bat b{font-size:.66em;font-weight:700;color:#141414;letter-spacing:-.03em}
+.sb.sb-dark{color:#141414}.sb.sb-dark .sb-bat b{color:#fff}
+
+/* ===== mini-site Chez Ginette (section « ce qui change ») ===== */
+.gn-hint svg{animation:gnside 1.3s ease-in-out infinite!important}
+@keyframes gnside{0%,100%{transform:translateX(-3px)}50%{transform:translateX(3px)}}
+.gn-screen{background:#fff8ef}
+.gn{position:absolute;inset:0;overflow:hidden;font-family:"Instrument Sans",system-ui,sans-serif;color:#2a1608;font-size:13px;font-size:4.5cqw;line-height:1.35;background:radial-gradient(120% 60% at 80% 18%,#ffe9c9 0,#fff8ef 55%),#fff8ef}
+.gn button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+/* 3D */
+.gn-3d{position:absolute;inset:0;z-index:0;perspective:90cqw;perspective-origin:50% 40%;pointer-events:none}
+.gn-3d-in{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .5s cubic-bezier(.2,.8,.2,1);opacity:var(--fade,1)}
+.gi{position:absolute;left:var(--x);top:var(--y);width:var(--w);transform-style:preserve-3d;transform:translate3d(calc(var(--px,0) * var(--k) * -26cqw),calc(var(--py,0) * var(--k) * -.35px),var(--z));opacity:var(--o);filter:blur(var(--bl)) drop-shadow(0 2.4cqw 2.2cqw rgba(90,40,10,.28));will-change:transform}
+.gi svg{display:block;width:100%;height:auto;animation:gnfloat var(--d) ease-in-out var(--dl) infinite;transform:rotate(var(--r))}
+.gi.near{filter:drop-shadow(0 3.4cqw 3cqw rgba(90,40,10,.33))}
+@keyframes gnfloat{0%,100%{transform:translate3d(0,0,0) rotate(var(--r)) rotateY(0)}50%{transform:translate3d(0,-3.5cqw,4cqw) rotate(calc(var(--r) + 7deg)) rotateY(18deg)}}
+/* navigation */
+.gn-nav{position:absolute;left:0;right:0;top:0;z-index:5;padding:13.6cqw 4cqw 0;background:rgba(255,248,239,.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(42,22,8,.08)}
+.gn-brand{display:flex;align-items:center;gap:2cqw;font:800 5.4cqw/1 "Fraunces",Georgia,serif;color:#c8102e;padding:1cqw 1cqw 2.4cqw}
+.gn-logo{display:grid;place-items:center;width:7.4cqw;height:7.4cqw;border-radius:50%;background:#c8102e;color:#fff8ef;font-size:4.4cqw}
+.gn-tabs{position:relative;display:flex}
+.gn-tabs button{flex:1;padding:2cqw 0 2.8cqw;font-weight:700;font-size:3.55cqw;color:#8a5a33;white-space:nowrap;transition:color .25s}
+.gn-tabs button[aria-selected="true"]{color:#c8102e}
+.gn-ind{position:absolute;left:0;bottom:0;height:.9cqw;width:25%;border-radius:1cqw;background:#c8102e;transform:translateX(calc(var(--px,0) * 100%))}
+/* pages */
+.gn-track{position:absolute;inset:0;z-index:2;display:flex;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;outline:0}
+.gn-track::-webkit-scrollbar,.gn-pg::-webkit-scrollbar{display:none}
+.gn-pg{flex:0 0 100%;height:100%;overflow-y:auto;overflow-x:hidden;scroll-snap-align:start;scroll-snap-stop:always;padding:35cqw 5cqw 26cqw;scrollbar-width:none;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+.gn-hero{min-height:88cqw;padding-top:3cqw}
+.gn-hero h4{font:800 9.6cqw/1.02 "Fraunces",Georgia,serif;letter-spacing:-.02em;max-width:72%;margin:2.5cqw 0 3cqw;text-wrap:balance}
+.gn-lead{max-width:60%;color:#5a3a22;font-size:4.1cqw}
+.gn-open{display:inline-flex;align-items:center;gap:1.6cqw;font-weight:700;font-size:3.6cqw;background:#fff;border-radius:99px;padding:1.4cqw 3cqw;box-shadow:0 1px 0 #ecd9c3}
+.gn-open i{width:2cqw;height:2cqw;border-radius:50%;background:#1f9d55;box-shadow:0 0 0 1cqw rgba(31,157,85,.18)}
+.gn-open.closed i{background:#c8102e;box-shadow:0 0 0 1cqw rgba(200,16,46,.15)}
+.gn-open.big{font-size:4cqw;margin-bottom:3cqw}
+.gn-btns{display:flex;gap:2.4cqw;margin-top:5cqw}
+.gn-btns button{background:#c8102e;color:#fff8ef;font-weight:700;font-size:3.8cqw;padding:2.8cqw 4.2cqw;border-radius:99px;box-shadow:0 1.4cqw 3cqw rgba(200,16,46,.28)}
+.gn-btns button.ghost{background:#fff;color:#c8102e;box-shadow:inset 0 0 0 .5cqw #c8102e}
+.gn h5{font:800 5.6cqw "Fraunces",Georgia,serif;color:#c8102e;margin:0 0 2.4cqw}
+.gn-card{background:rgba(255,255,255,.92);border-radius:5cqw;padding:4.4cqw;box-shadow:0 1cqw 0 #ecd9c3,0 4cqw 8cqw rgba(90,40,10,.08);margin-bottom:4cqw}
+.gn-fav{display:grid;grid-template-columns:11cqw 1fr auto;align-items:center;gap:2.6cqw;width:100%;text-align:left;padding:2cqw 0;border-top:1px dashed #ecd9c3}
+.gn-fav:first-of-type{border-top:0}
+.gn-fav .ic{width:11cqw;height:11cqw;border-radius:3cqw;background:#fff1de;display:grid;place-items:center}
+.gn-fav .ic svg{width:85%}
+.gn-fav b{font-weight:600}.gn-fav em{font-style:normal;font-weight:700}
+.gn-rate,.gn-score{display:flex;align-items:center;gap:3cqw;width:100%;text-align:left;background:#2a1608;color:#fff8ef;border-radius:5cqw;padding:3.6cqw 4.4cqw;margin-bottom:3cqw}
+.gn-rate b,.gn-score b{font:800 8.6cqw/1 "Fraunces",Georgia,serif}
+.gn-rate i,.gn-score i{display:block;font-style:normal;color:#f4c542;letter-spacing:.3cqw;font-size:3.8cqw}
+.gn-rate small,.gn-score small{display:block;font-size:3.2cqw;opacity:.85}
+.gn-fict{font-size:3cqw;color:#8a5a33;text-align:center;margin-top:2cqw}
+.gn-h{font-size:7cqw!important;margin-bottom:3cqw!important}
+.gn-chips{display:flex;gap:2cqw;margin-bottom:3.4cqw}
+.gn-chips button{font-weight:700;font-size:3.4cqw;padding:1.8cqw 3.2cqw;border-radius:99px;background:#fff;color:#8a5a33;box-shadow:inset 0 0 0 .4cqw #ecd9c3}
+.gn-chips button.on{background:#c8102e;color:#fff8ef;box-shadow:none}
+.gn .cat{font:700 3.6cqw "Instrument Sans",system-ui,sans-serif;color:#8a5a33;margin:3.6cqw 0 .6cqw;scroll-margin-top:38cqw}
+.gn .cat:first-child{margin-top:0}
+.gn .item{display:flex;justify-content:space-between;gap:2cqw;font-size:4cqw;padding:2.2cqw 0;border-bottom:1px dashed #e3cdb4}
+.gn .item b{font-weight:600}.gn .item em{font-style:normal;font-weight:700;white-space:nowrap}
+.gn .rev{background:#fff;border-radius:4.4cqw;padding:3.8cqw;margin-bottom:2.8cqw;box-shadow:0 1cqw 0 #ecd9c3;font-size:3.9cqw}
+.gn .rev .st{color:#e8a200;letter-spacing:.3cqw;font-size:3.8cqw;margin-bottom:.8cqw}
+.gn .rev small{display:block;color:#8a5a33;margin-top:1.2cqw;font-size:3.2cqw}
+.gn-map{height:38cqw;border-radius:5cqw;overflow:hidden;box-shadow:0 1cqw 0 #ecd9c3}
+.gn-map svg{width:100%;height:100%;display:block}
+.gn-map+.gn-btns{margin:3.4cqw 0 4cqw}
+.gn-hrs{list-style:none;margin:0;padding:0}
+.gn-hrs li{display:flex;justify-content:space-between;padding:1.6cqw 0;font-size:3.9cqw;border-bottom:1px dashed #ecd9c3}
+.gn-hrs li:last-child{border-bottom:0}
+.gn-hrs li b{font-weight:600}
+.gn-hrs li.today{color:#c8102e;font-weight:700}.gn-hrs li.today b{font-weight:800}
+.gn-call{position:absolute;left:5cqw;right:5cqw;bottom:4.5cqw;z-index:6;display:flex;align-items:center;justify-content:center;gap:2cqw;background:#2a1608!important;color:#fff8ef!important;font-weight:700!important;font-size:4.1cqw!important;padding:3.6cqw!important;border-radius:99px!important;box-shadow:0 2cqw 5cqw rgba(42,22,8,.35)}
+.gn-call svg{width:4.4cqw}
+.gn-call.pulse{animation:pulse 1.1s ease-in-out infinite}
+.gn-badge{top:auto!important;bottom:22cqw;z-index:7}
+.gn-badge svg{animation:gnside 1.3s ease-in-out infinite!important}
+@media (prefers-reduced-motion:reduce){.gi svg{animation:none}.gn-3d-in{transition:none}}
+.screen .layer.old{background:linear-gradient(#7a1f12 0 38px,#efe4c8 0);background:linear-gradient(#7a1f12 0 13.6cqw,#efe4c8 0)}
+.old .desk{margin-top:38px;margin-top:13.6cqw}
+</style>
+</head><body>
 <!DOCTYPE html>
 <html lang="fr-CA">
 <head>
@@ -47,7 +135,7 @@
 
   <div class="stage">
     <div class="phone" id="demo">
-      <div class="screen" id="scr">
+      <div class="screen" id="scr"><div class="sb" aria-hidden="true"><span class="sb-l"><span class="sb-t">9:41</span></span><span class="sb-r"><svg class="sb-sig" viewBox="0 0 18 12"><rect x="0" y="8" width="3.2" height="4" rx=".8"/><rect x="4.9" y="5.6" width="3.2" height="6.4" rx=".8"/><rect x="9.8" y="3" width="3.2" height="9" rx=".8"/><rect x="14.7" y="0" width="3.2" height="12" rx=".8"/></svg><svg class="sb-wifi" viewBox="0 0 16 12"><path d="M8 2.4c2.4 0 4.6.9 6.2 2.5l1.3-1.3A10.6 10.6 0 0 0 8 .5C5 .5 2.4 1.7.5 3.6l1.3 1.3A8.8 8.8 0 0 1 8 2.4z"/><path d="M8 5.8c1.5 0 2.8.6 3.8 1.5l1.3-1.3A7.2 7.2 0 0 0 8 3.9c-2 0-3.7.8-5.1 2.1l1.3 1.3c1-.9 2.3-1.5 3.8-1.5z"/><path d="M8 9.1c.7 0 1.3.3 1.7.7L8 11.6 6.3 9.8c.4-.4 1-.7 1.7-.7z"/></svg><span class="sb-bat"><b>87</b></span></span></div>
         <span class="exemple">Commerce fictif, à titre d'exemple</span>
         <div class="layer new" aria-label="Nouveau site, exemple">
           <div class="scroll">
@@ -147,15 +235,72 @@
   <h2 id="t2">Ce que vos clients voient, dès la première seconde.</h2>
   <p class="sub">Vendredi, 17 h. Quelqu'un cherche où souper sur son cellulaire. Votre site est lent, il faut zoomer pour lire le menu : il choisit la place d'à côté. Voici ce qui change pour lui, et pour vous.</p>
   <div class="ch-wrap">
-    <div class="ch-phone"><p class="swipe-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Glissez sur le téléphone</p><div class="phone"><div class="screen"><div class="swipe-badge" id="sbadge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M7 9l5-5 5 5M7 15l5 5 5-5"/></svg>Glissez ici</div><div class="layer new" id="new2">
-      <div class="scroll" id="sc2" tabindex="0" aria-label="Exemple de nouveau site : glissez pour faire défiler">
-        <header><h4>Chez Ginette</h4><p>Casse-croûte</p><div class="acts"><span>Appeler</span><span>Voir le menu</span></div></header>
-        <section><h5>Le menu</h5><div class="cat">Les classiques</div><div class="item"><b>Poutine régulière</b><em>9,50 $</em></div><div class="item"><b>Hot-dog steamé</b><em>3,25 $</em></div><div class="item"><b>Club sandwich</b><em>14,95 $</em></div><div class="cat">Sur le gril</div><div class="item"><b>Burger maison</b><em>11,75 $</em></div><div class="item"><b>Guédille au poulet</b><em>8,95 $</em></div><div class="item"><b>Assiette hot chicken</b><em>15,50 $</em></div></section>
-        <section><h5>Ce que nos clients disent</h5><div class="rev"><div class="st">★★★★★</div>La meilleure poutine du coin, sauce maison parfaite.<small>Exemple d'avis Google</small></div><div class="rev"><div class="st">★★★★★</div>Service rapide et sympathique, on revient chaque vendredi.<small>Exemple d'avis Google</small></div><div class="rev"><div class="st">★★★★☆</div>Portions généreuses, prix honnêtes.<small>Exemple d'avis Google</small></div></section>
-        <section><h5>Heures</h5><div class="hrs">Lun–ven 11 h à 20 h<br>Sam–dim 11 h à 21 h</div></section>
+    <div class="ch-phone"><p class="swipe-hint gn-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M3 12h18"/></svg>Glissez sur le téléphone pour changer de page</p><div class="phone"><div class="screen gn-screen"><div class="sb sb-dark" aria-hidden="true"><span class="sb-l"><span class="sb-t">9:41</span></span><span class="sb-r"><svg class="sb-sig" viewBox="0 0 18 12"><rect x="0" y="8" width="3.2" height="4" rx=".8"/><rect x="4.9" y="5.6" width="3.2" height="6.4" rx=".8"/><rect x="9.8" y="3" width="3.2" height="9" rx=".8"/><rect x="14.7" y="0" width="3.2" height="12" rx=".8"/></svg><svg class="sb-wifi" viewBox="0 0 16 12"><path d="M8 2.4c2.4 0 4.6.9 6.2 2.5l1.3-1.3A10.6 10.6 0 0 0 8 .5C5 .5 2.4 1.7.5 3.6l1.3 1.3A8.8 8.8 0 0 1 8 2.4z"/><path d="M8 5.8c1.5 0 2.8.6 3.8 1.5l1.3-1.3A7.2 7.2 0 0 0 8 3.9c-2 0-3.7.8-5.1 2.1l1.3 1.3c1-.9 2.3-1.5 3.8-1.5z"/><path d="M8 9.1c.7 0 1.3.3 1.7.7L8 11.6 6.3 9.8c.4-.4 1-.7 1.7-.7z"/></svg><span class="sb-bat"><b>87</b></span></span></div>
+      <div class="gn" id="gn">
+        <div class="gn-3d" id="gn3d" aria-hidden="true"><div class="gn-3d-in" id="gn3dIn"><i class="gi far" style="--x:4cqw;--y:150cqw;--w:15cqw;--z:-30cqw;--r:-12deg;--k:0.25;--d:7.5s;--dl:-1s;--o:0.55;--bl:1.2px"><svg viewBox="0 0 100 100"><path d="M14 46c0-20 16-30 36-30s36 10 36 30z" fill="#e39b3d"/><path d="M22 30c6-8 16-12 28-12" stroke="#f4bd6c" stroke-width="5" fill="none" stroke-linecap="round"/><g fill="#fff4d6"><ellipse cx="36" cy="30" rx="2.6" ry="1.5"/><ellipse cx="50" cy="24" rx="2.6" ry="1.5"/><ellipse cx="63" cy="31" rx="2.6" ry="1.5"/><ellipse cx="45" cy="38" rx="2.6" ry="1.5"/><ellipse cx="72" cy="40" rx="2.6" ry="1.5"/></g><path d="M12 47h76l-5 8-7-4-7 5-7-4-7 5-7-4-7 5-7-4-7 5-7-4z" fill="#6cbf45"/><rect x="12" y="53" width="76" height="12" rx="6" fill="#6b3416"/><path d="M13 63h74l-5 8H18z" fill="#f4c542"/><path d="M14 70h72c0 8-8 13-16 13H30c-8 0-16-5-16-13z" fill="#d98a35"/></svg></i><i class="gi far" style="--x:40cqw;--y:40cqw;--w:5cqw;--z:-26cqw;--r:18deg;--k:0.3;--d:6s;--dl:-2s;--o:0.7;--bl:0.8px"><svg viewBox="0 0 40 40"><rect x="5" y="9" width="27" height="24" rx="8" fill="#fff4d6"/><rect x="9" y="12" width="10" height="5" rx="2.5" fill="#fff"/></svg></i><i class="gi " style="--x:74cqw;--y:48cqw;--w:19cqw;--z:-8cqw;--r:10deg;--k:0.55;--d:6.4s;--dl:-3s;--o:1;--bl:0px"><svg viewBox="0 0 100 100"><path d="M58 3l-7 24" stroke="#fff8ef" stroke-width="5" stroke-linecap="round"/><path d="M58 3l-2 7" stroke="#c8102e" stroke-width="5"/><path d="M28 24h44l-7 70H35z" fill="#fff8ef"/><path d="M28 24h44l-1 9H29z" fill="#e8dccb"/><path d="M31.5 46h37l-2.6 26H34.1z" fill="#c8102e"/><text x="50" y="63" text-anchor="middle" font-family="Georgia,serif" font-weight="800" font-size="11" fill="#fff8ef">G</text><rect x="24" y="17" width="52" height="9" rx="3.5" fill="#2a1608"/></svg></i><i class="gi near" style="--x:63cqw;--y:74cqw;--w:33cqw;--z:14cqw;--r:-6deg;--k:1;--d:7s;--dl:0s;--o:1;--bl:0px"><svg viewBox="0 0 100 100"><path d="M14 46h72l-8 38H22z" fill="#c8102e"/><path d="M27 46l3 38M41 46l1 38M55 46l-1 38M69 46l-3 38" stroke="#fff8ef" stroke-width="5"/><path d="M14 46h72l-1 6H15z" fill="#a50d26"/><path d="M17 47c3-17 20-24 33-19 12-7 31-1 33 19z" fill="#f2c14e"/><g fill="#fff4d6"><rect x="29" y="30" width="10" height="8" rx="2.5"/><rect x="51" y="26" width="10" height="8" rx="2.5"/><rect x="64" y="35" width="9" height="7" rx="2.5"/><rect x="40" y="38" width="8" height="7" rx="2"/></g><path d="M23 44c7-9 13-5 18-12 6 7 13 2 18 6 7-3 14 2 17 7" stroke="#7a3b10" stroke-width="7" fill="none" stroke-linecap="round" opacity=".92"/></svg></i><i class="gi " style="--x:86cqw;--y:104cqw;--w:19cqw;--z:4cqw;--r:-14deg;--k:0.75;--d:5.8s;--dl:-2.4s;--o:1;--bl:0px"><svg viewBox="0 0 100 100"><g fill="#f6c445" stroke="#d9971f" stroke-width="1.4"><rect x="30" y="14" width="8" height="44" rx="2" transform="rotate(-14 34 36)"/><rect x="64" y="18" width="8" height="42" rx="2" transform="rotate(16 68 40)"/><rect x="38" y="10" width="8" height="48" rx="2" transform="rotate(-4 42 34)"/><rect x="54" y="8" width="8" height="50" rx="2" transform="rotate(8 58 33)"/><rect x="46" y="4" width="8" height="52" rx="2"/></g><path d="M22 44h56l-10 46H32z" fill="#c8102e"/><path d="M22 44h56l-2 8H24z" fill="#a50d26"/><circle cx="50" cy="68" r="10" fill="#fff8ef"/><text x="50" y="72.5" text-anchor="middle" font-family="Georgia,serif" font-weight="800" font-size="12" fill="#c8102e">G</text></svg></i><i class="gi near" style="--x:60cqw;--y:128cqw;--w:28cqw;--z:18cqw;--r:8deg;--k:1.15;--d:6.8s;--dl:-4s;--o:1;--bl:0px"><svg viewBox="0 0 100 100"><rect x="16" y="36" width="68" height="16" rx="8" fill="#f5cf8e"/><rect x="6" y="44" width="88" height="14" rx="7" fill="#b5532a"/><rect x="6" y="44" width="88" height="5" rx="2.5" fill="#cf6a3c"/><path d="M16 50c5 5 9-5 14 0s9-5 14 0 9-5 14 0 9-5 14 0 9-5 14 0" stroke="#f4d03f" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="14" y="54" width="72" height="20" rx="10" fill="#efbb6e"/><rect x="14" y="54" width="72" height="6" rx="3" fill="#f5cf8e"/></svg></i><i class="gi " style="--x:56cqw;--y:112cqw;--w:5cqw;--z:10cqw;--r:-20deg;--k:0.85;--d:5s;--dl:-1.5s;--o:1;--bl:0px"><svg viewBox="0 0 40 40"><rect x="5" y="9" width="27" height="24" rx="8" fill="#fff4d6"/><rect x="9" y="12" width="10" height="5" rx="2.5" fill="#fff"/></svg></i><i class="gi far" style="--x:84cqw;--y:32cqw;--w:4.5cqw;--z:-34cqw;--r:30deg;--k:0.22;--d:6.6s;--dl:-3.2s;--o:0.6;--bl:1px"><svg viewBox="0 0 40 40"><rect x="5" y="9" width="27" height="24" rx="8" fill="#fff4d6"/><rect x="9" y="12" width="10" height="5" rx="2.5" fill="#fff"/></svg></i></div></div>
+        <nav class="gn-nav" aria-label="Exemple de site : pages"><div class="gn-brand"><span class="gn-logo">G</span>Chez Ginette</div>
+          <div class="gn-tabs" role="tablist"><button type="button" role="tab" data-go="0" aria-selected="true">Accueil</button><button type="button" role="tab" data-go="1">Menu</button><button type="button" role="tab" data-go="2">Avis</button><button type="button" role="tab" data-go="3">Nous joindre</button><i class="gn-ind" id="gnInd"></i></div></nav>
+        <div class="gn-track" id="gnTrack" tabindex="0" aria-label="Exemple de nouveau site : glissez de côté pour changer de page">
+<section class="gn-pg" data-i="0" aria-label="Accueil">
+  <div class="gn-hero">
+    <p class="gn-open" data-open><i></i><span>Ouvert</span></p>
+    <h4>La vraie poutine, comme à la maison.</h4>
+    <p class="gn-lead">Frites coupées ici, sauce maison et fromage qui fait « squick ».</p>
+    <div class="gn-btns"><button type="button" data-go="1">Voir le menu</button><button type="button" class="ghost" data-go="3">Nous trouver</button></div>
+  </div>
+  <div class="gn-card">
+    <h5>Nos incontournables</h5>
+    <button type="button" class="gn-fav" data-go="1"><span class="ic"><svg viewBox="0 0 100 100"><path d="M14 46h72l-8 38H22z" fill="#c8102e"/><path d="M27 46l3 38M41 46l1 38M55 46l-1 38M69 46l-3 38" stroke="#fff8ef" stroke-width="5"/><path d="M14 46h72l-1 6H15z" fill="#a50d26"/><path d="M17 47c3-17 20-24 33-19 12-7 31-1 33 19z" fill="#f2c14e"/><g fill="#fff4d6"><rect x="29" y="30" width="10" height="8" rx="2.5"/><rect x="51" y="26" width="10" height="8" rx="2.5"/><rect x="64" y="35" width="9" height="7" rx="2.5"/><rect x="40" y="38" width="8" height="7" rx="2"/></g><path d="M23 44c7-9 13-5 18-12 6 7 13 2 18 6 7-3 14 2 17 7" stroke="#7a3b10" stroke-width="7" fill="none" stroke-linecap="round" opacity=".92"/></svg></span><b>Poutine régulière</b><em>9,50 $</em></button>
+    <button type="button" class="gn-fav" data-go="1"><span class="ic"><svg viewBox="0 0 100 100"><path d="M14 46c0-20 16-30 36-30s36 10 36 30z" fill="#e39b3d"/><path d="M22 30c6-8 16-12 28-12" stroke="#f4bd6c" stroke-width="5" fill="none" stroke-linecap="round"/><g fill="#fff4d6"><ellipse cx="36" cy="30" rx="2.6" ry="1.5"/><ellipse cx="50" cy="24" rx="2.6" ry="1.5"/><ellipse cx="63" cy="31" rx="2.6" ry="1.5"/><ellipse cx="45" cy="38" rx="2.6" ry="1.5"/><ellipse cx="72" cy="40" rx="2.6" ry="1.5"/></g><path d="M12 47h76l-5 8-7-4-7 5-7-4-7 5-7-4-7 5-7-4-7 5-7-4z" fill="#6cbf45"/><rect x="12" y="53" width="76" height="12" rx="6" fill="#6b3416"/><path d="M13 63h74l-5 8H18z" fill="#f4c542"/><path d="M14 70h72c0 8-8 13-16 13H30c-8 0-16-5-16-13z" fill="#d98a35"/></svg></span><b>Burger maison</b><em>11,75 $</em></button>
+    <button type="button" class="gn-fav" data-go="1"><span class="ic"><svg viewBox="0 0 100 100"><rect x="16" y="36" width="68" height="16" rx="8" fill="#f5cf8e"/><rect x="6" y="44" width="88" height="14" rx="7" fill="#b5532a"/><rect x="6" y="44" width="88" height="5" rx="2.5" fill="#cf6a3c"/><path d="M16 50c5 5 9-5 14 0s9-5 14 0 9-5 14 0 9-5 14 0 9-5 14 0" stroke="#f4d03f" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="14" y="54" width="72" height="20" rx="10" fill="#efbb6e"/><rect x="14" y="54" width="72" height="6" rx="3" fill="#f5cf8e"/></svg></span><b>Hot-dog steamé</b><em>3,25 $</em></button>
+  </div>
+  <button type="button" class="gn-rate" data-go="2"><b>4,8</b><span><i>★★★★★</i><small>Voir ce que nos clients disent</small></span></button>
+  <p class="gn-fict">Commerce fictif, à titre d'exemple.</p>
+</section>
+<section class="gn-pg" data-i="1" aria-label="Menu">
+  <h5 class="gn-h">Le menu</h5>
+  <div class="gn-chips"><button type="button" data-cat="c1">Classiques</button><button type="button" data-cat="c2">Sur le gril</button><button type="button" data-cat="c3">Extras</button></div>
+  <div class="gn-card">
+    <div class="cat" id="c1">Les classiques</div>
+    <div class="item"><b>Poutine régulière</b><em>9,50 $</em></div>
+    <div class="item"><b>Poutine italienne</b><em>11,25 $</em></div>
+    <div class="item"><b>Hot-dog steamé</b><em>3,25 $</em></div>
+    <div class="item"><b>Club sandwich</b><em>14,95 $</em></div>
+    <div class="cat" id="c2">Sur le gril</div>
+    <div class="item"><b>Burger maison</b><em>11,75 $</em></div>
+    <div class="item"><b>Guédille au poulet</b><em>8,95 $</em></div>
+    <div class="item"><b>Assiette hot chicken</b><em>15,50 $</em></div>
+    <div class="cat" id="c3">Extras</div>
+    <div class="item"><b>Frites maison</b><em>4,50 $</em></div>
+    <div class="item"><b>Rondelles d'oignon</b><em>5,25 $</em></div>
+    <div class="item"><b>Boisson gazeuse</b><em>2,25 $</em></div>
+  </div>
+</section>
+<section class="gn-pg" data-i="2" aria-label="Avis">
+  <h5 class="gn-h">Ce que nos clients disent</h5>
+  <div class="gn-score"><b>4,8</b><span><i>★★★★★</i><small>Exemple de note Google</small></span></div>
+  <div class="rev"><div class="st">★★★★★</div>La meilleure poutine du coin, sauce maison parfaite.<small>Marie-Ève · exemple d'avis Google</small></div>
+  <div class="rev"><div class="st">★★★★★</div>Service rapide et sympathique, on revient chaque vendredi.<small>Jonathan · exemple d'avis Google</small></div>
+  <div class="rev"><div class="st">★★★★★</div>Les frites sont coupées sur place, ça goûte vraiment la patate.<small>Sophie · exemple d'avis Google</small></div>
+  <div class="rev"><div class="st">★★★★☆</div>Portions généreuses, prix honnêtes.<small>Marc · exemple d'avis Google</small></div>
+</section>
+<section class="gn-pg" data-i="3" aria-label="Nous joindre">
+  <h5 class="gn-h">Nous joindre</h5>
+  <p class="gn-open big" data-open><i></i><span>Ouvert</span></p>
+  <div class="gn-map" aria-hidden="true"><svg viewBox="0 0 200 110" preserveAspectRatio="xMidYMid slice"><rect width="200" height="110" fill="#f3e7d3"/><path d="M-5 70L205 52M60-5l18 120M140-5l-10 120M-5 22l210 14" stroke="#fffaf2" stroke-width="9"/><path d="M-5 70L205 52M60-5l18 120M140-5l-10 120M-5 22l210 14" stroke="#e6d3b6" stroke-width="1"/><rect x="88" y="8" width="38" height="26" rx="3" fill="#cfe3b8"/><rect x="150" y="66" width="44" height="30" rx="3" fill="#cfe3b8"/><rect x="8" y="78" width="46" height="24" rx="3" fill="#e9dcc6"/><g transform="translate(103 50)"><ellipse cx="0" cy="13" rx="8" ry="3" fill="#000" opacity=".18"/><path d="M0 12C-9 1-11-4-11-8a11 11 0 0 1 22 0c0 4-2 9-11 20z" fill="#c8102e"/><circle cx="0" cy="-8" r="4.2" fill="#fff8ef"/></g></svg></div>
+  <div class="gn-btns"><button type="button">Itinéraire</button><button type="button" class="ghost">Appeler</button></div>
+  <div class="gn-card">
+    <h5>Heures</h5>
+    <ul class="gn-hrs">
+      <li data-d="1"><span>Lundi</span><b>11 h à 20 h</b></li><li data-d="2"><span>Mardi</span><b>11 h à 20 h</b></li><li data-d="3"><span>Mercredi</span><b>11 h à 20 h</b></li><li data-d="4"><span>Jeudi</span><b>11 h à 20 h</b></li><li data-d="5"><span>Vendredi</span><b>11 h à 20 h</b></li><li data-d="6"><span>Samedi</span><b>11 h à 21 h</b></li><li data-d="0"><span>Dimanche</span><b>11 h à 21 h</b></li>
+    </ul>
+  </div>
+</section>
+        </div>
+        <button type="button" class="gn-call" id="call2"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Appeler Chez Ginette</button>
+        <div class="swipe-badge gn-badge" id="sbadge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M3 12h18"/></svg>Glissez</div>
       </div>
-      <div class="call" id="call2">Appeler Chez Ginette</div>
-    </div></div></div><div class="cap" id="cap" aria-live="polite"></div></div>
+    </div></div><div class="cap" id="cap" aria-live="polite"></div></div>
 
     <div class="steps">
       <div class="step" data-y="0"><p class="av">Avant : il faut zoomer pour lire</p><h3>Lisible sur cellulaire</h3><p>Le site s'adapte à l'écran. Gros texte, gros boutons, aucune loupe nécessaire.</p></div>
@@ -285,7 +430,7 @@
   </div>
   <div class="l-stage">
     <div class="l-phone">
-      <div class="l-screen">
+      <div class="l-screen"><div class="sb" aria-hidden="true"><span class="sb-l"><span class="sb-t">9:41</span></span><span class="sb-r"><svg class="sb-sig" viewBox="0 0 18 12"><rect x="0" y="8" width="3.2" height="4" rx=".8"/><rect x="4.9" y="5.6" width="3.2" height="6.4" rx=".8"/><rect x="9.8" y="3" width="3.2" height="9" rx=".8"/><rect x="14.7" y="0" width="3.2" height="12" rx=".8"/></svg><svg class="sb-wifi" viewBox="0 0 16 12"><path d="M8 2.4c2.4 0 4.6.9 6.2 2.5l1.3-1.3A10.6 10.6 0 0 0 8 .5C5 .5 2.4 1.7.5 3.6l1.3 1.3A8.8 8.8 0 0 1 8 2.4z"/><path d="M8 5.8c1.5 0 2.8.6 3.8 1.5l1.3-1.3A7.2 7.2 0 0 0 8 3.9c-2 0-3.7.8-5.1 2.1l1.3 1.3c1-.9 2.3-1.5 3.8-1.5z"/><path d="M8 9.1c.7 0 1.3.3 1.7.7L8 11.6 6.3 9.8c.4-.4 1-.7 1.7-.7z"/></svg><span class="sb-bat"><b>87</b></span></span></div>
         <div class="l-who"><b>Pizzéria Brixel</b><small id="lea-timer">Pizzéria démo</small></div>
         <div class="l-orb" id="lea-orb" aria-hidden="true"></div>
         <div class="l-state" id="lea-state" aria-live="polite"></div>
@@ -550,17 +695,6 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
     const corps=`Bonjour Alexis,\n\nJ'aimerais que vous m'appeliez pour l'appel gratuit.\n\nMoment choisi : ${jour} à ${heure}\nNom : ${f.nom.value.trim()}\nTéléphone : ${f.tel.value.trim()}\nCommerce : ${f.commerce.value.trim()}\nCourriel : ${f.courriel.value.trim()}\nSite actuel : ${f.site.value.trim()||'aucun'}\n`;
     location.href=`mailto:alexis@brixelpro.com?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(corps)}`;
     err.textContent='';});
-  // le téléphone défile seulement quand on glisse DESSUS; à côté, la page défile normalement
-  const sc2=document.getElementById('sc2'),call2=document.getElementById('call2'),steps=[...document.querySelectorAll('.step')],cap=document.getElementById('cap'),badge=document.getElementById('sbadge');
-  let cur=-1;
-  const show=i=>{if(i===cur)return;cur=i;const st=steps[i];steps.forEach(s=>s.classList.toggle('on',s===st));
-    cap.innerHTML='<div>'+st.innerHTML+'</div>';call2.classList.toggle('pulse',!!st.dataset.call)};
-  const onSc=()=>{const max=Math.max(1,sc2.scrollHeight-sc2.clientHeight),p=sc2.scrollTop/max;
-    show(p<.12?0:p<.5?1:p<.93?2:3);if(sc2.scrollTop>8)badge.classList.add('gone')};
-  sc2.addEventListener('scroll',onSc,{passive:true});show(0);
-  // sur ordinateur : cliquer une étape fait défiler le téléphone
-  const tgt=[0,.3,.75,1];
-  steps.forEach((st,i)=>{st.tabIndex=0;st.addEventListener('click',()=>{const max=sc2.scrollHeight-sc2.clientHeight;sc2.scrollTo({top:tgt[i]*max,behavior:RM?'auto':'smooth'})})});
 })();
 </script>
 
@@ -613,5 +747,49 @@ async function start(){
   }finally{busy=false}
 }
 $('go').addEventListener('click',async()=>{if(conv){try{await conv.endSession()}catch(_){}conv=null;ui(false)}else{unlock();start()}});
+</script>
+<script>/* heure en direct dans la barre d'état des téléphones de démo */
+(function(){function t(){var d=new Date(),s=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');document.querySelectorAll('.sb-t').forEach(function(e){e.textContent=s})}t();setInterval(t,15000)})();
+</script>
+<script>/* mini-site Chez Ginette : pages qui glissent, parallaxe 3D, étapes à côté */
+(function(){
+  const RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const gn=document.getElementById('gn');if(!gn)return;
+  const tr=document.getElementById('gnTrack'),in3=document.getElementById('gn3dIn'),call2=document.getElementById('call2'),badge=document.getElementById('sbadge');
+  const tabs=[...gn.querySelectorAll('.gn-tabs button')],pages=[...tr.querySelectorAll('.gn-pg')];
+  const steps=[...document.querySelectorAll('.change .step')],cap=document.getElementById('cap');
+  let cur=-1,touched=false;
+  const show=i=>{if(i===cur)return;cur=i;tabs.forEach((t,k)=>t.setAttribute('aria-selected',k===i));
+    const st=steps[i];if(st){steps.forEach(s=>s.classList.toggle('on',s===st));if(cap)cap.innerHTML='<div>'+st.innerHTML+'</div>'}
+    call2.classList.toggle('pulse',i===3)};
+  const go=(i,smooth=true)=>tr.scrollTo({left:i*tr.clientWidth,behavior:RM||!smooth?'auto':'smooth'});
+  let raf=0;const upd=()=>{raf=0;const px=tr.scrollLeft/Math.max(1,tr.clientWidth);
+    gn.style.setProperty('--px',px.toFixed(3));in3.style.setProperty('--fade',Math.max(.3,1-px*.7).toFixed(3));
+    const pg=pages[Math.round(px)];gn.style.setProperty('--py',pg?pg.scrollTop:0);
+    show(Math.round(px));if(px>.04){badge.classList.add('gone')}};
+  const req=()=>{if(!raf)raf=requestAnimationFrame(upd)};
+  tr.addEventListener('scroll',req,{passive:true});
+  pages.forEach(p=>p.addEventListener('scroll',req,{passive:true}));
+  gn.addEventListener('pointerdown',()=>{touched=true},{passive:true});
+  gn.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>{touched=true;go(+b.dataset.go)}));
+  gn.querySelectorAll('[data-cat]').forEach(b=>b.addEventListener('click',()=>{const pg=pages[1],c=document.getElementById(b.dataset.cat);
+    gn.querySelectorAll('[data-cat]').forEach(x=>x.classList.toggle('on',x===b));pg.scrollTo({top:c.offsetTop-pg.clientWidth*.34,behavior:RM?'auto':'smooth'})}));
+  call2.addEventListener('click',()=>{call2.classList.remove('pulse');void call2.offsetWidth;call2.classList.add('pulse');setTimeout(()=>cur===3||call2.classList.remove('pulse'),2200)});
+  // étapes (ordinateur) : cliquer change la page
+  steps.forEach((st,i)=>{st.tabIndex=0;st.addEventListener('click',()=>{touched=true;go(i)});st.addEventListener('keydown',e=>{if(e.key==='Enter')go(i)})});
+  // effet 3D : le décor penche avec le doigt ou la souris
+  if(!RM){const tilt=e=>{const r=gn.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+      in3.style.setProperty('--ry',(x*16).toFixed(2)+'deg');in3.style.setProperty('--rx',(-y*12).toFixed(2)+'deg')};
+    gn.addEventListener('pointermove',tilt,{passive:true});gn.addEventListener('pointerleave',()=>{in3.style.setProperty('--ry','0deg');in3.style.setProperty('--rx','0deg')})}
+  // ouvert / fermé, d'après les heures (11 h à 20 h en semaine, 11 h à 21 h la fin de semaine)
+  const d=new Date(),w=d.getDay(),h=d.getHours()+d.getMinutes()/60,close=(w===0||w===6)?21:20,open=h>=11&&h<close;
+  const txt=open?`Ouvert · ferme à ${close} h`:(h<11?'Fermé · ouvre à 11 h':'Fermé · ouvre demain à 11 h');
+  gn.querySelectorAll('[data-open]').forEach(e=>{e.classList.toggle('closed',!open);e.querySelector('span').textContent=txt});
+  const li=gn.querySelector(`.gn-hrs li[data-d="${w}"]`);if(li)li.classList.add('today');
+  show(0);upd();
+  // petit aperçu du glissement la première fois qu'on voit le téléphone
+  if(!RM){const io=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;io.disconnect();
+    setTimeout(()=>{if(touched)return;tr.scrollTo({left:tr.clientWidth*.32,behavior:'smooth'});setTimeout(()=>{if(!touched)tr.scrollTo({left:0,behavior:'smooth'})},650)},700)},{threshold:.6});io.observe(gn)}
+})();
 </script>
 </body></html>

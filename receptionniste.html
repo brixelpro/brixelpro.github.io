@@ -110,6 +110,19 @@
 .lea .l-hero{padding-top:clamp(120px,16vw,170px)!important}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 </style>
+<style>
+/* ===== barre d'état iPhone sur les téléphones de démo ===== */
+.screen,.l-screen{container-type:inline-size}
+.sb{position:absolute;top:0;left:0;right:0;z-index:8;height:38px;display:flex;align-items:center;justify-content:space-between;pointer-events:none;color:#fff;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",system-ui,sans-serif;font-weight:600;font-size:14px;line-height:1;letter-spacing:-.02em;height:13.6cqw;font-size:5.1cqw}
+.sb>span{width:35%;display:flex;justify-content:center;align-items:center;gap:.32em}
+.sb .sb-t{font-variant-numeric:tabular-nums}
+.sb svg{height:.74em;fill:currentColor;flex:none}
+.sb .sb-sig{width:1.12em}.sb .sb-wifi{width:1.02em}
+.sb-bat{position:relative;display:inline-grid;place-items:center;width:1.95em;height:.92em;border-radius:.3em;background:currentColor;margin:0 .2em 0 .05em;flex:none}
+.sb-bat::after{content:"";position:absolute;right:-.19em;top:50%;width:.1em;height:.34em;transform:translateY(-50%);border-radius:0 .08em .08em 0;background:currentColor;opacity:.5}
+.sb-bat b{font-size:.66em;font-weight:700;color:#141414;letter-spacing:-.03em}
+.sb.sb-dark{color:#141414}.sb.sb-dark .sb-bat b{color:#fff}
+</style>
 </head>
 <body class="loaded introdone">
 <canvas id="bg" aria-hidden="true"></canvas>
@@ -132,7 +145,7 @@
   </div>
   <div class="l-stage">
     <div class="l-phone">
-      <div class="l-screen">
+      <div class="l-screen"><div class="sb" aria-hidden="true"><span class="sb-l"><span class="sb-t">9:41</span></span><span class="sb-r"><svg class="sb-sig" viewBox="0 0 18 12"><rect x="0" y="8" width="3.2" height="4" rx=".8"/><rect x="4.9" y="5.6" width="3.2" height="6.4" rx=".8"/><rect x="9.8" y="3" width="3.2" height="9" rx=".8"/><rect x="14.7" y="0" width="3.2" height="12" rx=".8"/></svg><svg class="sb-wifi" viewBox="0 0 16 12"><path d="M8 2.4c2.4 0 4.6.9 6.2 2.5l1.3-1.3A10.6 10.6 0 0 0 8 .5C5 .5 2.4 1.7.5 3.6l1.3 1.3A8.8 8.8 0 0 1 8 2.4z"/><path d="M8 5.8c1.5 0 2.8.6 3.8 1.5l1.3-1.3A7.2 7.2 0 0 0 8 3.9c-2 0-3.7.8-5.1 2.1l1.3 1.3c1-.9 2.3-1.5 3.8-1.5z"/><path d="M8 9.1c.7 0 1.3.3 1.7.7L8 11.6 6.3 9.8c.4-.4 1-.7 1.7-.7z"/></svg><span class="sb-bat"><b>87</b></span></span></div>
         <div class="l-who"><b>Pizzéria Brixel</b><small id="timer">Pizzéria démo</small></div>
         <div class="l-orb" id="orb" aria-hidden="true"></div>
         <div class="l-state" id="state" aria-live="polite"></div>
@@ -342,6 +355,9 @@ $('go').addEventListener('click',async()=>{if(conv){try{await conv.endSession()}
 </script>
 <script>/* ouvrir toujours en haut de la page, sauf lien vers une section (#forfaits) */
 if(!location.hash){try{history.scrollRestoration="manual"}catch(e){}scrollTo(0,0);addEventListener("pageshow",function(){if(!location.hash)scrollTo(0,0)})}
+</script>
+<script>/* heure en direct dans la barre d'état des téléphones de démo */
+(function(){function t(){var d=new Date(),s=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');document.querySelectorAll('.sb-t').forEach(function(e){e.textContent=s})}t();setInterval(t,15000)})();
 </script>
 </body>
 </html>
