@@ -140,7 +140,7 @@ top();addEventListener("DOMContentLoaded",top);addEventListener("load",function(
       <a class="btn" href="#contact">Réserver mon appel gratuit</a>
     </div>
     <p class="note">Rien à payer si l'aperçu ne vous plaît pas.</p>
-      <a class="lea-pill" href="#lea"><b>Nouveau</b><span>Ajoutez Léa, notre réceptionniste IA, et payez votre site moins cher</span><i aria-hidden="true">↓</i></a>
+      <a class="lea-pill" href="#lea-section"><b>Nouveau</b><span>Ajoutez Léa, notre réceptionniste IA, et payez votre site moins cher</span><i aria-hidden="true">↓</i></a>
   </div>
 
   <div class="stage">
@@ -424,10 +424,10 @@ top();addEventListener("DOMContentLoaded",top);addEventListener("load",function(
 
 .lea h2.l-h1{font-size:clamp(38px,6.4vw,82px);font-weight:900;text-wrap:balance}
 .lea h2.l-h1 span{display:block;color:var(--chantier);font-variation-settings:"wdth" 75;font-weight:800}
-#lea .l-hero{padding-top:clamp(40px,7vw,90px)!important}
-#lea{scroll-margin-top:70px}
+#lea-section .l-hero{padding-top:clamp(40px,7vw,90px)!important}
+#lea-section{scroll-margin-top:70px}
 </style>
-<div class="lea" id="lea">
+<div class="lea" id="lea-section">
 <section class="l-hero">
   <div>
     <span class="l-tag">Nouveau chez Brixel Pro</span>
@@ -556,6 +556,7 @@ top();addEventListener("DOMContentLoaded",top);addEventListener("load",function(
 </div>
 </section>
 
+<span id="lea" aria-hidden="true"></span>
 <section class="lf" id="forfaits" aria-labelledby="t-lf">
 <style>
 .lea-pill{display:inline-flex;align-items:center;gap:10px;margin-top:16px;padding:9px 14px 9px 9px;border-radius:999px;background:rgba(255,199,44,.12);border:1px solid rgba(255,199,44,.45);color:#f3f5ff;text-decoration:none;font:600 15px "Instrument Sans",sans-serif;max-width:100%}
@@ -591,7 +592,7 @@ section.change .step:not(.on){opacity:.8!important}
   <span class="lf-tag">Nouveau · Léa, réceptionniste IA</span>
   <h2 id="t-lf">Ajoutez Léa. <span>Votre site coûte moins cher.</span></h2>
   <p class="lf-lead">Léa répond au téléphone de votre commerce et prend les commandes comme une vraie employée, en français et en anglais, pour moins cher qu'un employé au téléphone. Prenez-la avec votre site neuf : plus le forfait est gros, plus votre site est réduit.</p>
-  <div class="lf-acts"><a class="lf-try" href="#lea">Essayez Léa maintenant</a><a class="lf-tel" href="tel:+14504850383">ou appelez-la : <b>450-485-0383</b></a></div>
+  <div class="lf-acts"><a class="lf-try" href="#lea-section">Essayez Léa maintenant</a><a class="lf-tel" href="tel:+14504850383">ou appelez-la : <b>450-485-0383</b></a></div>
   <div class="lf-g">
     <article class="lf-c"><h3>Site web seul</h3><div class="lf-site"><small>Votre site web neuf</small><b>499,99 $</b></div><div class="lf-mo"><small>Ou payez au mois, modifications illimitées</small><b>59,99 $</b><span>/mois × 12</span></div><p class="lf-calls">Votre site neuf, tout inclus. Modifications illimitées ensuite : 19,99 $/mois, si vous voulez.</p><a class="lf-btn ghost" href="#contact">Réserver mon appel</a></article>
     <article class="lf-c"><h3>Essentiel</h3><div class="lf-site"><small>Votre site web neuf</small><b>349,99 $</b><s>499,99 $</s></div><div class="lf-mo"><small>+ Léa, réceptionniste IA</small><b>149 $</b><span>/mois</span></div><p class="lf-calls">Engagement de 6 mois. Léa répond jusqu'à 150 appels par mois.<span class="lf-plus">✓ Modifications illimitées du site incluses</span></p><a class="lf-btn ghost" href="#contact">Réserver mon appel</a></article>
@@ -735,7 +736,7 @@ async function start(){
   if(busy)return;busy=true;$('err').hidden=true;$('state').textContent='Connexion…';$('golbl').textContent='Connexion…';
   let guard=setTimeout(()=>{if(!conv){busy=false;$('golbl').textContent='Essayez votre future réceptionniste';$('state').textContent='';fail('La démo ne démarre pas sur cet appareil. Appelez Léa au 450-485-0383.')}},15000);
   try{
-    if(!window.isSecureContext){location.replace('https://brixelpro.com'+location.pathname+'#lea');return}
+    if(!window.isSecureContext){location.replace('https://brixelpro.com'+location.pathname+'#lea-section');return}
     if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)throw Object.assign(new Error('nomic'),{name:'NoMic'});
     const mic=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});
     mic.getTracks().forEach(t=>t.stop());
