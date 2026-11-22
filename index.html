@@ -4,6 +4,7 @@
 (function(){try{history.scrollRestoration="manual"}catch(e){}
 var n=performance.getEntriesByType&&performance.getEntriesByType("navigation")[0],again=n&&(n.type==="reload"||n.type==="back_forward");
 if(again&&location.hash)history.replaceState(null,"",location.pathname+location.search);
+var ext=!document.referrer||document.referrer.indexOf(location.hostname)<0;if(ext&&location.hash==="#forfaits")history.replaceState(null,"",location.pathname+location.search);
 var moved=false;["wheel","touchstart","keydown","pointerdown"].forEach(function(e){addEventListener(e,function(){moved=true},{passive:true,once:true})});
 function top(){if(!location.hash&&!moved)scrollTo(0,0)}
 top();addEventListener("DOMContentLoaded",top);addEventListener("load",function(){top();setTimeout(top,60)});addEventListener("pageshow",function(e){if(e.persisted)top()})})();
