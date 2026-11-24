@@ -211,13 +211,7 @@ top();addEventListener("DOMContentLoaded",top);addEventListener("load",function(
   </div>
 </section>
 
-<section class="video" aria-labelledby="tv">
-  <h2 id="tv">Ce qu'on fait, en 70 secondes.</h2>
-  <div class="vd-cadre">
-    <video id="bxVideo" src="brixel-pro-video-web-v3.mp4" autoplay muted loop playsinline preload="auto"></video>
-    <button id="bxSon" class="vd-son" type="button" aria-pressed="false">🔊 Activer le son</button>
-  </div>
-</section>
+
 <style>
 .video{padding:80px var(--pad) 40px;position:relative;background:linear-gradient(180deg,rgba(6,11,34,0),rgba(6,11,34,.55) 25%,rgba(6,11,34,.55) 75%,rgba(6,11,34,0))}
 .video h2{font-size:clamp(32px,7vw,76px);font-weight:900;max-width:12em;margin:0 auto 28px;text-align:center}
@@ -329,6 +323,14 @@ top();addEventListener("DOMContentLoaded",top);addEventListener("load",function(
     <li><h3>Vous l'approuvez</h3><p>Un changement à faire? Écrivez-le, on l'ajuste. Vous payez seulement quand tout est à votre goût.</p></li>
     <li><h3>Il est en ligne</h3><p>Sur votre adresse actuelle. On vous guide pour la dernière étape, par courriel ou en appel vidéo.</p></li>
   </ol>
+</section>
+
+<section class="video" aria-labelledby="tv">
+  <h2 id="tv">Ce qu'on fait, en 70 secondes.</h2>
+  <div class="vd-cadre">
+    <video id="bxVideo" src="brixel-pro-video-web-v3.mp4" autoplay muted loop playsinline preload="auto"></video>
+    <button id="bxSon" class="vd-son" type="button" aria-pressed="false">🔊 Activer le son</button>
+  </div>
 </section>
 
 
@@ -754,8 +756,28 @@ async function start(){
     clearTimeout(guard);conv=null;
     $('state').textContent='';$('golbl').textContent='Essayez votre future réceptionniste';
     const n=e&&e.name;
+    if(n==='NotFoundError'||n==='NoMic'||n==='NotAllowedError'||n==='SecurityError'){texte();return}
     fail(n==='NotAllowedError'||n==='SecurityError'?'Le micro est bloqué. Autorisez le micro pour ce site (sur iPhone : le « aA » ou le cadenas dans la barre d\'adresse), puis réessayez. Ou appelez Léa au 450-485-0383.':n==='NotFoundError'||n==='NoMic'?'Aucun micro trouvé sur cet appareil. Appelez Léa au 450-485-0383.':'Impossible de démarrer la démo pour le moment. Réessayez, ou appelez Léa au 450-485-0383.');
   }finally{busy=false}
+}
+
+let tws=null,tAttente=null;
+function texte(){
+  $('err').hidden=true;
+  if(!$('tform')){
+    $('chat').insertAdjacentHTML('afterend','<form id="lea-tform" style="display:flex;gap:8px;margin-top:12px"><input id="lea-tin" autocomplete="off" placeholder="Écrivez à Léa… ex. Une pizza pepperoni fromage" aria-label="Votre message à Léa" style="flex:1;min-width:0;padding:13px 14px;border:2px solid #0d1e52;border-radius:12px;background:#fff8dc;color:#0d1e52;font:500 16px Instrument Sans,system-ui,sans-serif"><button type="submit" style="padding:0 18px;border:0;border-radius:12px;background:#0d1e52;color:#fff8dc;font:700 15px Instrument Sans,system-ui,sans-serif;cursor:pointer">Envoyer</button></form><p id="lea-tnote" style="margin:8px 2px 0;font:13px/1.4 Instrument Sans,system-ui,sans-serif;opacity:.75">Pas de micro? Écrivez-lui ici. Pour lui parler de vive voix : 450-485-0383.</p>');
+    $('tform').addEventListener('submit',ev=>{ev.preventDefault();const v=$('tin').value.trim();if(!v)return;$('tin').value='';add('me',v);if(tws&&tws.readyState===1)tws.send(JSON.stringify({type:'user_message',text:v}));else{tAttente=v;ouvrir()}});
+  }
+  ouvrir();
+}
+function ouvrir(){
+  if(tws&&tws.readyState<2)return;
+  $('state').textContent='Connexion…';
+  tws=new WebSocket('wss://api.elevenlabs.io/v1/convai/conversation?agent_id='+AGENT_ID);
+  tws.onopen=()=>{tws.send(JSON.stringify({type:'conversation_initiation_client_data',conversation_config_override:{conversation:{text_only:true}}}));$('state').textContent='Léa vous répond par écrit';if(tAttente){const v=tAttente;tAttente=null;setTimeout(()=>tws.send(JSON.stringify({type:'user_message',text:v})),800)}try{$('tin').focus({preventScroll:true})}catch(_){}};
+  tws.onmessage=e=>{let d;try{d=JSON.parse(e.data)}catch(_){return}if(d.type==='ping'){tws.send(JSON.stringify({type:'pong',event_id:d.ping_event.event_id}));return}if(d.type==='agent_response')add('ai',d.agent_response_event.agent_response)};
+  tws.onerror=()=>{};
+  tws.onclose=()=>{$('state').textContent='Conversation terminée. Écrivez pour recommencer.'};
 }
 $('go').addEventListener('click',async()=>{if(conv){try{await conv.endSession()}catch(_){}conv=null;ui(false)}else{unlock();start()}});
 </script>
