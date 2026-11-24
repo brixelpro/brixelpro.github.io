@@ -227,11 +227,12 @@ document.addEventListener('DOMContentLoaded',function(){
   if(!v||!b)return;
   b.addEventListener('click',function(){
     v.muted=!v.muted;
-    if(!v.muted){v.currentTime=0;}
+    if(!v.muted||v.ended){v.currentTime=0;}
     var p=v.play();if(p&&p.catch)p.catch(function(){});
     b.textContent=v.muted?'🔊 Activer le son':'🔇 Couper le son';
     b.setAttribute('aria-pressed',String(!v.muted));
   });
+  v.addEventListener('ended',function(){v.muted=true;b.textContent='🔊 Revoir avec le son';b.setAttribute('aria-pressed','false');});
   if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();}
 });
 </script>
@@ -328,7 +329,7 @@ document.addEventListener('DOMContentLoaded',function(){
 <section class="video" aria-labelledby="tv">
   <h2 id="tv">Ce qu'on fait, en 80 secondes.</h2>
   <div class="vd-cadre">
-    <video id="bxVideo" src="brixel-pro-video-web-v4.mp4" autoplay muted loop playsinline preload="auto"></video>
+    <video id="bxVideo" src="brixel-pro-video-web-v4.mp4" autoplay muted playsinline preload="auto"></video>
     <button id="bxSon" class="vd-son" type="button" aria-pressed="false">🔊 Activer le son</button>
   </div>
 </section>
