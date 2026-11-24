@@ -22,9 +22,9 @@ h1,h2,h3{overflow-wrap:break-word;max-width:100%;font-family:"Archivo",sans-seri
 /* ---------- barre ---------- */
 .top{position:fixed;inset:0 0 auto;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px var(--pad);padding-top:max(14px,env(safe-area-inset-top));background:rgba(13,30,82,.96)}
 .logo{display:flex;align-items:center;gap:10px;font:800 19px "Archivo",sans-serif;font-variation-settings:"wdth" 120;text-decoration:none}
-.logo i{display:grid;grid-template-columns:repeat(3,7px);gap:2px}
-.logo i b{width:7px;height:7px;background:var(--chantier);border-radius:1px}
-.logo i b:nth-child(2),.logo i b:nth-child(4),.logo i b:nth-child(9){background:var(--craie)}
+.logo i{display:grid;grid-template-columns:repeat(3,6px);grid-auto-rows:6px;gap:1.5px}
+.logo i b{width:6px;height:6px;border-radius:1.5px}
+
 .top .btn{padding:11px 18px;font-size:15px}
 
 /* ---------- héros ---------- */
