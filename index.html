@@ -661,25 +661,42 @@ addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
   let pos=0;
   const set=p=>{pos=Math.max(0,Math.min(1,p));old.style.clipPath=`inset(0 ${100-pos*100}% 0 0)`;handle.style.left=(pos*100)+'%'};
   const fromEvt=e=>{const r=scr.getBoundingClientRect();return (e.clientX-r.left)/r.width};
-  let drag=false;
-  // seule la poignée jaune se glisse : ailleurs sur le téléphone, le doigt fait défiler la page
+  let drag=false,user=false,sx=0,sy=0,maybe=false,pid=null;
+  // la poignée jaune se glisse, et on peut aussi glisser ou toucher n'importe où sur l'écran du téléphone
+  // (un glissement de haut en bas fait encore défiler la page)
   const hb=handle.querySelector('button');
-  hb.addEventListener('pointerdown',e=>{if(!demo.classList.contains('ready'))return;drag=true;hb.setPointerCapture(e.pointerId);hint.style.opacity=0;e.preventDefault()});
-  hb.addEventListener('pointermove',e=>{if(drag)set(fromEvt(e))});
-  hb.addEventListener('pointerup',()=>drag=false);hb.addEventListener('pointercancel',()=>drag=false);
-  handle.querySelector('button').addEventListener('keydown',e=>{if(e.key==='ArrowRight')set(pos+.1);if(e.key==='ArrowLeft')set(pos-.1)});
+  scr.style.touchAction='pan-y';
+  const begin=e=>{user=true;drag=true;demo.classList.add('ready');hint.style.opacity=0;try{scr.setPointerCapture(e.pointerId)}catch(_){}};
+  scr.addEventListener('pointerdown',e=>{if(e.button>0)return;sx=e.clientX;sy=e.clientY;pid=e.pointerId;
+    if(e.target.closest('#handle')){begin(e);e.preventDefault();return}
+    maybe=true});
+  scr.addEventListener('pointermove',e=>{
+    if(drag){set(fromEvt(e));e.preventDefault();return}
+    if(maybe){const dx=Math.abs(e.clientX-sx),dy=Math.abs(e.clientY-sy);
+      if(dx>8&&dx>dy){maybe=false;begin(e);set(fromEvt(e))}else if(dy>10){maybe=false}}});
+  const end=e=>{if(maybe&&e&&e.type==='pointerup'&&Math.abs(e.clientX-sx)<8&&Math.abs(e.clientY-sy)<8){user=true;demo.classList.add('ready');hint.style.opacity=0;set(fromEvt(e))}
+    drag=false;maybe=false};
+  scr.addEventListener('pointerup',end);scr.addEventListener('pointercancel',()=>{drag=false;maybe=false});
+  hb.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){user=true;set(pos+.1)}if(e.key==='ArrowLeft'){user=true;set(pos-.1)}});
+  // vieux iPhone sans pointer events
+  if(!window.PointerEvent){
+    scr.addEventListener('touchstart',e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;maybe=true},{passive:true});
+    scr.addEventListener('touchmove',e=>{const t=e.touches[0];if(drag){set(fromEvt(t));e.preventDefault();return}
+      if(maybe){const dx=Math.abs(t.clientX-sx),dy=Math.abs(t.clientY-sy);if(dx>8&&dx>dy){maybe=false;user=true;drag=true;demo.classList.add('ready');hint.style.opacity=0;e.preventDefault()}else if(dy>10)maybe=false}},{passive:false});
+    scr.addEventListener('touchend',()=>{drag=false;maybe=false});
+  }
 
   // briques
   const bricks=document.getElementById('bricks');const R=12,C=6;
   for(let r=0;r<R;r++)for(let c=0;c<C;c++){const b=document.createElement('i');b.style.setProperty('--d',((R-1-r)*55+Math.random()*90)+'ms');bricks.appendChild(b)}
   function build(){
-    demo.classList.remove('ready','building');set(1);hint.style.opacity=1;hint.textContent='Voici le site d’aujourd’hui…';
+    user=false;demo.classList.remove('ready','building');set(1);hint.style.opacity=1;hint.textContent='Voici le site d’aujourd’hui…';
     if(RM){set(0);demo.classList.add('ready');hint.textContent='Glissez le bouton jaune pour comparer.';return}
     setTimeout(()=>{hint.textContent='On le rebâtit…';void demo.offsetWidth;demo.classList.add('building')},1400);
-    setTimeout(()=>{set(0)},1400+1050);
-    setTimeout(()=>{demo.classList.remove('building');set(.12);demo.classList.add('ready');hint.textContent='Glissez le bouton jaune pour comparer.';
+    setTimeout(()=>{if(!user)set(0)},1400+1050);
+    setTimeout(()=>{demo.classList.remove('building');if(!user)set(.12);demo.classList.add('ready');hint.textContent='Glissez le bouton jaune pour comparer.';
       // petit aller-retour pour montrer que ça se glisse
-      let t0=null;const go=t=>{t0??=t;const k=(t-t0)/1400;if(k>1){set(.06);return}set(.12+Math.sin(k*Math.PI)*.38);requestAnimationFrame(go)};requestAnimationFrame(go);
+      let t0=null;const go=t=>{if(user)return;t0??=t;const k=(t-t0)/1400;if(k>1){set(.06);return}set(.12+Math.sin(k*Math.PI)*.38);requestAnimationFrame(go)};requestAnimationFrame(go);
     },1400+1250+900);
   }
   document.getElementById('replay').addEventListener('click',build);
