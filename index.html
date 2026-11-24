@@ -734,7 +734,6 @@ function ui(on){$('go').classList.toggle('l-on',on);$('golbl').textContent=on?'R
   clearInterval(clock);if(on){t0=Date.now();clock=setInterval(()=>{const s=Math.floor((Date.now()-t0)/1000);$('timer').textContent='En appel · '+Math.floor(s/60)+':'+String(s%60).padStart(2,'0')},500)}
   else{$('timer').textContent='Appel terminé';$('orb').className='l-orb';$('state').textContent=''}}
 let dial=false;const TEL='tel:+14504850383';
-const INAPP=/GSA\/|FBAN|FBAV|Instagram|Messenger|Line\/|; wv\)|GmailApp|Snapchat|TikTok/i.test(navigator.userAgent);
 function toCall(){dial=true;$('golbl').textContent='Appeler Léa au 450-485-0383'}
 function fail(msg){$('err').textContent=msg;$('err').hidden=false;toCall()}
 async function start(){
@@ -782,7 +781,7 @@ function ouvrir(){
   tws.onerror=()=>{};
   tws.onclose=()=>{$('state').textContent='Conversation terminée. Écrivez pour recommencer.'};
 }
-$('go').addEventListener('click',async()=>{if(dial||(!conv&&(INAPP||!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia))){location.href=TEL;return}if(conv){try{await conv.endSession()}catch(_){}conv=null;ui(false)}else{unlock();start()}});
+$('go').addEventListener('click',async()=>{if(dial&&!conv){location.href=TEL;return}if(conv){try{await conv.endSession()}catch(_){}conv=null;ui(false)}else{unlock();start()}});
 </script>
 <script>/* heure en direct dans la barre d'état des téléphones de démo */
 (function(){function t(){var d=new Date(),s=d.getHours()+':'+String(d.getMinutes()).padStart(2,'0');document.querySelectorAll('.sb-t').forEach(function(e){e.textContent=s})}t();setInterval(t,15000)})();
