@@ -59,5 +59,7 @@ const set=v=>{s.classList.toggle('open',v);o.setAttribute('aria-expanded',v);doc
 o.onclick=()=>set(true);x.onclick=()=>set(false);s.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>set(false)));
 addEventListener('keydown',e=>{if(e.key==='Escape')set(false)})})();
 </script>
+<script>(function(){var r=null;try{var q=new URLSearchParams(location.search);r=q.get("r");if(r&&/^[a-z0-9-]{3,90}$/.test(r))localStorage.setItem("bx_r",r);else r=localStorage.getItem("bx_r")}catch(e){}window.goatcounter={no_onload:true};function go(p){try{goatcounter.count({path:p,title:p,event:true})}catch(e){}}addEventListener("load",function(){if(!window.goatcounter||!goatcounter.count)return;goatcounter.count({path:location.pathname});if(!r)return;go("/r/"+r+"/site");var f=document.getElementById("forfaits");if(f&&"IntersectionObserver" in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){go("/r/"+r+"/forfaits");io.disconnect()}},{threshold:.25});io.observe(f)}})})();</script>
+<script data-goatcounter="https://brixelpro.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>
