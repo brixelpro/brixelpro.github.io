@@ -112,7 +112,7 @@ h1,h2,h3{overflow-wrap:break-word;max-width:100%;font-family:"Archivo",sans-seri
 .ch-phone{position:sticky;top:90px;z-index:2;display:flex;justify-content:center;height:fit-content;order:-1}
 .ch-phone .phone{width:min(230px,58vw)}
 .steps{display:flex;flex-direction:column;gap:0}
-.step{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding:20px 0;opacity:.28;transition:opacity .4s}
+.step{min-height:70vh;display:flex;flex-direction:column;justify-content:center;padding:20px 0;opacity:1}
 .step.on{opacity:1}
 .step h3{font-size:clamp(30px,5vw,52px);font-weight:800;margin-bottom:14px}
 .step .av{font-size:15px;color:#ff9d8f;margin-bottom:6px;text-decoration:line-through;text-decoration-color:rgba(255,157,143,.6)}
