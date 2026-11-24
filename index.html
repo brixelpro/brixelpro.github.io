@@ -784,6 +784,7 @@ function ouvrir(){
   tws.onerror=()=>{};
   tws.onclose=()=>{$('state').textContent='Conversation terminée. Écrivez pour recommencer.'};
 }
+document.querySelectorAll('a[href="#lea-section"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const sec=document.getElementById('lea-section');sec&&sec.scrollIntoView({behavior:'smooth',block:'start'});if(!conv)$('go').click()}));
 $('go').addEventListener('click',async()=>{if(dial&&!conv){location.href=TEL;return}if(conv){try{await conv.endSession()}catch(_){}conv=null;ui(false)}else{unlock();start()}});
 </script>
 <script>/* heure en direct dans la barre d'état des téléphones de démo */
